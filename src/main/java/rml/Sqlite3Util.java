@@ -58,7 +58,8 @@ public class Sqlite3Util {
 	      int id = new Long(new Date().getTime()).intValue();
 	       StringBuffer sb = new StringBuffer("insert into video values('"+UUID.randomUUID()+"', ");
 	       sb.append("'"+v.getVid()+"',");
-	       sb.append("'"+null!=v.getVtitle()?v.getVtitle().trim():""+"',");
+	       String title = null!=v.getVtitle()?v.getVtitle().trim():"";
+	       sb.append("'"+title+"',");
 	       sb.append("'"+v.getVname()+"',");
 	       sb.append("'"+v.getVlenght()+"',");
 	       sb.append(""+v.getVsize()+",");
