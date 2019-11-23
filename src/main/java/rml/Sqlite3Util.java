@@ -60,7 +60,7 @@ public class Sqlite3Util {
 	      Statement statement = connection.createStatement();
 	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
 	      
-	      statement.executeUpdate("create table video (id integer, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date string,vkind integer)");
+	      //statement.executeUpdate("create table video (id integer, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date string,vkind integer)");
 	      
 	       StringBuffer sb = new StringBuffer("insert into video values("+UUID.randomUUID()+", ");
 	       sb.append("'"+v.getVid()+"',");
