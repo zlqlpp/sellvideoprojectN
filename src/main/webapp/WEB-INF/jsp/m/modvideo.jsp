@@ -45,28 +45,10 @@ function go(v){
   	 <form action="/m/vidomodupdata.do">
   	 	表id(不用管這列):<input type="text" value="${video.id }" disabled="disabled" id="id" name="id"/>
   	 	視頻ID：<input type="text" value="${video.vid }" disabled="disabled" id="vid" name="vid"/>
-  	 	視頻標題：<textare type="text" value="${video.vname }"  id="vname" name="vname"></textare>
+  	 	視頻標題：<textarea   id="vname" name="vname">${video.vname }</textarea>
   	 </form>
   	 
-	<table border="1" width="70%">
-		 <tr>
-   			<td    >表id(不用管這列) </td>
-   			<td   >视频ID</td>
-   			<td    >视频标题+时长</td>
-   			<td    >編輯</td>
-   			<td    >刪除</td>
-   		</tr>
-   		
-   		<c:forEach items="${videolist}" var="v">
-   		<tr>
-   			<td height="40px" >${v.id } </td>
-   			<td height="40px" >${v.vid } </td>
-   			<td height="40px" >${v.vtitle }-${v.vlenght }</td>
-		    <td height="40px" weigth="40px"  ><a href="/m/vidomod.do?id=${v.id }&vid=${v.vid }">編輯</a></td>
- 			<td height="40px" weigth="40px"  ><a href="#">刪除</a></td>
-   		</tr>
-   		</c:forEach>
-   </table>
+ 
    
 </body>
 </html>
