@@ -56,7 +56,7 @@ public class Sqlite3Util {
 	      
 	      //statement.executeUpdate("create table video (id integer, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date string,vkind integer)");
 	      int id = new Long(new Date().getTime()).intValue();
-	       StringBuffer sb = new StringBuffer("insert into video values("+UUID.randomUUID()+", ");
+	       StringBuffer sb = new StringBuffer("insert into video values('"+UUID.randomUUID()+"', ");
 	       sb.append("'"+v.getVid()+"',");
 	       sb.append("'"+v.getVtitle()+"',");
 	       sb.append("'"+v.getVname()+"',");
@@ -136,7 +136,7 @@ public class Sqlite3Util {
 	      //statement.executeUpdate("create table user (id integer, seecode string,count integer,crt_date string)");
 	      
 	      //int id = new Long(new Date().getTime()).intValue();
-	       StringBuffer sb = new StringBuffer("insert into user values("+UUID.randomUUID()+", ");
+	       StringBuffer sb = new StringBuffer("insert into user values('"+UUID.randomUUID()+"', ");
 	       sb.append("'"+u.getCode()+"',");
 	       sb.append(u.getCount()+",");
 	       sb.append("'"+u.getCrtDate()+"')");
@@ -212,7 +212,7 @@ public class Sqlite3Util {
 	      //statement.executeUpdate("create table user (id integer, seecode string,count integer,crt_date string)");
 	      
 	      //int id = new Long(new Date().getTime()).intValue();
-	       StringBuffer sb = new StringBuffer("update user set count="+u.getCount()+" where id="+u.getId()); 
+	       StringBuffer sb = new StringBuffer("update user set count="+u.getCount()+" where id='"+u.getId()+"'"); 
  
 	       
 	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
