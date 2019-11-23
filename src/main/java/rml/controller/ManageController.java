@@ -274,9 +274,9 @@ class MusicImplements implements Runnable{
     	
         List<String> processList = new ArrayList<String>();
 		try {
-			Process p = Runtime.getRuntime().exec("youtube-dl --get-id "+durl);
-			p.waitFor();
-			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			Process pro = Runtime.getRuntime().exec("youtube-dl --get-id "+durl);
+			pro.waitFor();
+			BufferedReader input = new BufferedReader(new InputStreamReader(pro.getInputStream()));
 			String line = "";
 			while ((line = input.readLine()) != null) {
 				processList.add(line);
@@ -291,9 +291,9 @@ class MusicImplements implements Runnable{
 		
           processList = new ArrayList<String>();
 		try {
-			Process p = Runtime.getRuntime().exec("youtube-dl --get-title "+durl);
-			p.waitFor();
-			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			Process pro = Runtime.getRuntime().exec("youtube-dl --get-title "+durl);
+			pro.waitFor();
+			BufferedReader input = new BufferedReader(new InputStreamReader(pro.getInputStream()));
 			String line = "";
 			while ((line = input.readLine()) != null) {
 				processList.add(line);
@@ -311,9 +311,9 @@ class MusicImplements implements Runnable{
 
         processList = new ArrayList<String>();
 		try {
-			Process p = Runtime.getRuntime().exec("youtube-dl --get-duration "+durl);
-			p.waitFor();
-			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			Process pro = Runtime.getRuntime().exec("youtube-dl --get-duration "+durl);
+			pro.waitFor();
+			BufferedReader input = new BufferedReader(new InputStreamReader(pro.getInputStream()));
 			String line = "";
 			while ((line = input.readLine()) != null) {
 				processList.add(line);
@@ -323,13 +323,13 @@ class MusicImplements implements Runnable{
 			e.printStackTrace();
 		}
 		String length = processList.get(0).toString();
-		Logger.getLogger(MusicImplements.class).info("视频下载---视频时长："+ processList.get(0).toString()); 
+		Logger.getLogger(MusicImplements.class).info("视频下载---视频时长："+ length); 
 		
 		
 		Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...进行中..." );
         try {
         	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(title)s.%(ext)s "+durl);
-        	Process pro = Runtime.getRuntime().exec("youtube-dl -o --write-thumbnail "+p.getProperty("videoPath")+"%(id)s.%(ext)s "+durl);
+        	Process pro = Runtime.getRuntime().exec("youtube-dl -o  "+p.getProperty("videoPath")+"%(id)s.%(ext)s "+durl);
         	pro.waitFor();
         } catch ( Exception e) {
             e.printStackTrace();
@@ -338,9 +338,9 @@ class MusicImplements implements Runnable{
         
         processList = new ArrayList<String>();
 		try {
-			Process p = Runtime.getRuntime().exec("ls "+id+"*");
-			p.waitFor();
-			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			Process pro = Runtime.getRuntime().exec("ls "+p.getProperty("videoPath")+id+"*");
+			pro.waitFor();
+			BufferedReader input = new BufferedReader(new InputStreamReader(pro.getInputStream()));
 			String line = "";
 			while ((line = input.readLine()) != null) {
 				processList.add(line);
