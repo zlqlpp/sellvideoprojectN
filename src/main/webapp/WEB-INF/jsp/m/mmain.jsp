@@ -46,6 +46,8 @@ function go(v){
  
    		<c:forEach items="${videolist}" var="v">
    		<tr>
+   			<td height="40px"  onclick="go('${v.id }')">${v.id } </td>
+   			<td height="40px"  onclick="go('${v.vid }')">${v.vid } </td>
    			<td height="40px"  onclick="go('${v.vname }')">${v.vtitle }-${v.vlenght }</td>
  
    		</tr>

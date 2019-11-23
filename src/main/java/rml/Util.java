@@ -44,8 +44,10 @@ public  class Util {
 			}
 			return false;
 		}
+		
+		//
 	    public static List getVideoListFromFileAndDB(HttpSession session){
-	    	 
+	    	Logger.getLogger(Util.class).info("先从目录中读出视频，库里有则显示，库里没有不显示" );
 	    	Properties prop = (Properties) session.getAttribute("prop");
 			if(prop==null) {
 				prop = getProp(session);
@@ -73,6 +75,41 @@ public  class Util {
 	        
 	    }
  
+	    public static List videolistformod(HttpSession session){
+	    	Logger.getLogger(Util.class).info("先从目录中读出视频，库里有则显示中文名。没有只显示ID" );
+	    	Properties prop = (Properties) session.getAttribute("prop");
+			if(prop==null) {
+				prop = getProp(session);
+			}
+			
+			List tmpvlist = null;    
+			List vlist = new ArrayList();
+			
+			File file = new File(prop.getProperty("videoPath"));
+	        File[] fileNamesArray = file.listFiles();
+	        
+	        Video v = null;
+	        if(null != fileNamesArray){
+	        for (int i = 0; i < fileNamesArray.length; i++) {
+	        	 
+	        	tmpvlist = null;  
+	            if (fileNamesArray[i].isFile()) {
+	            	tmpvlist = Sqlite3Util.selectfromvide("'"+fileNamesArray[i].getName().split("\\.")[0]+"'");
+	            	if(null!=tmpvlist&&tmpvlist.size()>0) {
+	            		v = (Video) tmpvlist.get(0);
+	            		vlist.add(v);
+	            	}else {
+	            		v = new Video();
+	            		v.setVid(fileNamesArray[i].getName().split("\\.")[0]);
+	            		v.setVname(fileNamesArray[i].getName().split("\\.")[1]);
+	            		vlist.add(v);
+	            	}
+	            }
+	        }
+	        }
+	        return  vlist;
+	        
+	    }
 	    
 	    public static Properties getProp(HttpSession session){
 	      	 

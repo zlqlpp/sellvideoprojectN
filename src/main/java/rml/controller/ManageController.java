@@ -56,7 +56,7 @@ public class ManageController {
 	}
 	
 	@RequestMapping(value="/mmain")
-	public String listvideos(Model model,HttpServletRequest request,HttpSession session) {
+	public String mmain(Model model,HttpServletRequest request,HttpSession session) {
 		
 		String code = request.getParameter("passwd");
 		if(Util.ifMLogin(session)){
@@ -97,12 +97,12 @@ public class ManageController {
 		 Long t = new Date().getTime();
 		 Logger.getLogger(ManageController.class).info("新的的crtgg："+t);
 		 
-		 String reqeustT = request.getParameter("t");
-		 if(null!=reqeustT&&t-Long.parseLong(reqeustT)<300000){
+		/* String reqeustT = request.getParameter("t");
+		 if(null!=reqeustT&&t-Long.parseLong(reqeustT)<300000){*/
 			 
 			 model.addAttribute("videolist",Util.getVideoListFromFileAndDB(session));
 			 return "m/crtggdetail";
-		 }
+		/* }
 		 
 			if(!Util.ifMLogin(session)){
 				return "m/mlogin";
@@ -119,7 +119,7 @@ public class ManageController {
 		 Logger.getLogger(ManageController.class).info("url："+request.getRequestURL());
 		 Logger.getLogger(ManageController.class).info("uri："+request.getRequestURI());
 		 model.addAttribute("t",request.getRequestURL()+"?t="+crtgg);
-		return "m/crtgg";
+		return "m/crtgg";*/
 	}
 
 	
@@ -142,14 +142,14 @@ public class ManageController {
 	}
 	
 	@RequestMapping(value="/regetvideolist")
-	public String regetvideolist(HttpServletRequest request,HttpSession session) {
+	public String listvideofromod(HttpServletRequest request,HttpSession session) {
 		if(!Util.ifMLogin(session)){
 			return "m/mlogin";
 		}
 		
 		Logger.getLogger(ManageController.class).info("刷新视频列表");
 		
-		session.setAttribute("videolist", Util.getVideoListFromFileAndDB(session));
+		session.setAttribute("videolist", Util.videolistformod(session));
 		
 		return "m/mmain";  
 	}
