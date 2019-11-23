@@ -167,7 +167,7 @@ public class ManageController {
 		List vlist = null;
 		Video v = null;
 		if(null!=id&&!"".equals(id)) {
-			vlist = Sqlite3Util.selectfromvide("'"+id+"'");
+			vlist = Sqlite3Util.selectfromvide("'"+vid+"'");
 			v = (Video) vlist.get(0);
 		}else {
 			v = new Video();
