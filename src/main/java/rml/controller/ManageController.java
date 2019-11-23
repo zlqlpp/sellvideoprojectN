@@ -388,6 +388,7 @@ class MusicImplements implements Runnable{
 		jedis.set("videolist",JSON.toJSONString(vlist));
 		      
 		RedisUtil.returnResource(jedis);*/
+    	Sqlite3Util.insertuser(v);
 		Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...已写入sqlite3..." ); 
     	 
     }  
