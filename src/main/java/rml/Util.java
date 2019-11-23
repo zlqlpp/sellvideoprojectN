@@ -101,7 +101,7 @@ public  class Util {
 	            	}else {
 	            		v = new Video();
 	            		v.setVid(fileNamesArray[i].getName().split("\\.")[0]);
-	            		v.setVname(fileNamesArray[i].getName().split("\\.")[1]);
+	            		v.setVname(fileNamesArray[i].getName());
 	            		vlist.add(v);
 	            	}
 	            }
