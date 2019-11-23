@@ -73,7 +73,7 @@ window.onload=function(){
 						<div class="box">
 							<ul class="list" id="article_list">
 							<c:forEach items="${videolist}" var="v">
-								<li><a href="">
+								<li>
 										<div class="list_img">
 											<img data-savepage-src="" src="/videoimg/${v.vid }.jpg" onerror="" alt="">
 										</div>
@@ -83,7 +83,7 @@ window.onload=function(){
 												<div onclick="go('${v.vid}')">${v.vtitle }---(时长:${v.vlenght })</div>
 											</div>
 										</div>
-								</a></li>
+								</li>
 							</c:forEach>
 	
 							</ul>
