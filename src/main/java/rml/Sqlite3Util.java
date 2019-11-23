@@ -46,7 +46,7 @@ public class Sqlite3Util {
   }
   
   
-  public static void insertvideo(Video v) {   //----------------------下载完视频后插入表中
+  public static int insertvideo(Video v) {   //----------------------下载完视频后插入表中
 	    Connection connection = null;
 	    try {
 	    	 Class.forName("org.sqlite.JDBC");
@@ -68,7 +68,7 @@ public class Sqlite3Util {
 	      int ret = statement.executeUpdate(sb.toString());
 	      
 	      Logger.getLogger(Sqlite3Util.class).info("sql-ret："+ ret); 
-	       
+	       return ret;
 	    }
 	    catch(Exception e) {
 	    	 e.printStackTrace();
@@ -82,6 +82,7 @@ public class Sqlite3Util {
 	    	  e.printStackTrace();
 	      }
 	    }
+	    return 0;
 	  }
   
   public static List selectfromvide(String vids) {//----------------------查询表中的所有视频
@@ -125,7 +126,7 @@ public class Sqlite3Util {
 	    return null;
 	  }
   
-  public static void insertuser(User u) {   //----------------------创建观看码实体
+  public static int insertuser(User u) {   //----------------------创建观看码实体
 	    Connection connection = null;
 	    try {
 	    	 Class.forName("org.sqlite.JDBC");
@@ -145,7 +146,7 @@ public class Sqlite3Util {
 	      int ret = statement.executeUpdate(sb.toString());
 	      
 	      Logger.getLogger(Sqlite3Util.class).info("sql-ret："+ ret); 
-	       
+	       return ret;
 	    }
 	    catch(Exception e) {
 	    	 e.printStackTrace();
@@ -159,6 +160,7 @@ public class Sqlite3Util {
 	    	  e.printStackTrace();
 	      }
 	    }
+	    return 0;
 	  }
   
   public static List selectfromuser(String seecode) {//----------------------查询表中的所有视频

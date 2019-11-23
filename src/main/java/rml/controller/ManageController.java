@@ -196,10 +196,14 @@ public class ManageController {
 		user.setCount(Double.parseDouble(count));
 		user.setCrtDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date));
 		
-		 Sqlite3Util.insertuser(user);
+		int ret = Sqlite3Util.insertuser(user);
 		
+		if(ret!=1) {
+			Logger.getLogger(ManageController.class).info("创建观看码,code:"+user.getCode()+",观看次数，count:"+user.getCount()+",入库失败");
+		}else {
+			Logger.getLogger(ManageController.class).info("创建观看码,code:"+user.getCode()+",观看次数，count:"+user.getCount()+",已入库");
+		}
 		
-		Logger.getLogger(ManageController.class).info("创建观看码,code:"+user.getCode()+",观看次数，count:"+user.getCount()+",并存放redis,一份map,一份list");
 
 		
 		model.addAttribute("newcode", user.getCode());
@@ -364,8 +368,13 @@ class MusicImplements implements Runnable{
 		jedis.set("videolist",JSON.toJSONString(vlist));
 		      
 		RedisUtil.returnResource(jedis);*/
-    	Sqlite3Util.insertvideo(v);
-		Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...已写入sqlite3..." ); 
+    	int ret = Sqlite3Util.insertvideo(v);
+    	if(ret!=1) {
+    		Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...写入sqlite3 失败..." ); 
+    	}else {
+    		Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...已写入sqlite3..." ); 
+    	}
+		
     	 
     }  
 } 

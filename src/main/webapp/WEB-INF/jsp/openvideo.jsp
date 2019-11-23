@@ -155,6 +155,9 @@ body {background: #FFF; background-image:none; line-height: 130%; font-size: 10p
 			
 			<a href="/c/listvideos.do"><h3>返回列表</h3></a>
         	<iframe src='/video/${vname }' frameborder='0' width='auto' height='auto' allowfullscreen='true'  ></iframe>
+        	<br/>
+        	<br/>
+        	<font size="4"><font color="#ff0000"><a href="/c/listvideos.do"><h3>返回列表</h3></a> </font></font> <br />
        </div>
   </div>
  
