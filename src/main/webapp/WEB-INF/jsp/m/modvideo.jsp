@@ -42,6 +42,12 @@ function go(v){
   	 <hr/>
   	 
   	 
+  	 <form action="/m/vidomodupdata.do">
+  	 	表id(不用管這列):<input type="text" value="${video.id }" disabled="disabled" id="id" name="id"/>
+  	 	視頻ID：<input type="text" value="${video.vid }" disabled="disabled" id="vid" name="vid"/>
+  	 	視頻標題：<textare type="text" value="${video.vname }"  id="vname" name="vname"></textare>
+  	 </form>
+  	 
 	<table border="1" width="70%">
 		 <tr>
    			<td    >表id(不用管這列) </td>

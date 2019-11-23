@@ -211,28 +211,48 @@ public class Sqlite3Util {
 	      Statement statement = connection.createStatement();
 	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
 	      
-	      //statement.executeUpdate("create table user (id integer, seecode string,count integer,crt_date string)");
-	      
-	      //int id = new Long(new Date().getTime()).intValue();
 	       StringBuffer sb = new StringBuffer("update user set count="+u.getCount()+" where id='"+u.getId()+"'"); 
  
-	       
 	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
 	      int ret = statement.executeUpdate(sb.toString());
 	      
 	      Logger.getLogger(Sqlite3Util.class).info("sql-ret："+ ret); 
 	      return ret;
-	       
-	    }
-	    catch(Exception e) {
+	    } catch(Exception e) {
 	    	 e.printStackTrace();
-	    }
-	    finally {
+	    } finally {
 	      try {
 	        if(connection != null)
 	          connection.close();
+	      } catch(SQLException e) {
+	    	  e.printStackTrace();
 	      }
-	      catch(SQLException e) {
+	    }
+	    return 0;
+	  }
+  
+  public static int updatevideo(Video v) {   //----------------------创建观看码实体
+	    Connection connection = null;
+	    try {
+	    	 Class.forName("org.sqlite.JDBC");
+	      connection = DriverManager.getConnection("jdbc:sqlite:/root/youtubedl/video.db");
+	      Statement statement = connection.createStatement();
+	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
+	      
+	       StringBuffer sb = new StringBuffer("update video set vname='"+v.getVname()+"' where id='"+v.getId()+"'"); 
+
+	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
+	      int ret = statement.executeUpdate(sb.toString());
+	      
+	      Logger.getLogger(Sqlite3Util.class).info("sql-ret："+ ret); 
+	      return ret;
+	    } catch(Exception e) {
+	    	 e.printStackTrace();
+	    } finally {
+	      try {
+	        if(connection != null)
+	          connection.close();
+	      } catch(SQLException e) {
 	    	  e.printStackTrace();
 	      }
 	    }

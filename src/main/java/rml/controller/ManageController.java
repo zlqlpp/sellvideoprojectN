@@ -142,12 +142,67 @@ public class ManageController {
 	}
 	
 	@RequestMapping(value="/regetvideolist")
-	public String listvideofromod(HttpServletRequest request,HttpSession session) {
+	public String videolistfromod(HttpServletRequest request,HttpSession session) {
 		if(!Util.ifMLogin(session)){
 			return "m/mlogin";
 		}
 		
 		Logger.getLogger(ManageController.class).info("刷新视频列表");
+		
+		session.setAttribute("videolist", Util.videolistformod(session));
+		
+		return "m/mmain";  
+	}
+	
+	@RequestMapping(value="/vidomod")
+	public String vidomod(Model model,HttpServletRequest request,HttpSession session) {
+		if(!Util.ifMLogin(session)){
+			return "m/mlogin";
+		}
+		
+		String id = request.getParameter("id");
+		String vid = request.getParameter("vid");
+		
+		List vlist = null;
+		Video v = null;
+		if(null!=id&&!"".equals(id)) {
+			vlist = Sqlite3Util.selectfromvide("'"+id+"'");
+			v = (Video) vlist.get(0);
+		}else {
+			v = new Video();
+			v.setVid(vid);
+		}
+		 model.addAttribute("video",v);
+		 
+		Logger.getLogger(ManageController.class).info("修改視頻");
+		
+		return "m/modvideo";  
+	}
+	
+	@RequestMapping(value="/vidomodupdata")
+	public String vidomodupdata(Model model,HttpServletRequest request,HttpSession session) {
+		if(!Util.ifMLogin(session)){
+			return "m/mlogin";
+		}
+		
+		String id = request.getParameter("id");
+		String vid = request.getParameter("vid");
+		String vname = request.getParameter("vname");
+		
+		 
+		Video v = new Video(); 
+		v.setId(id);
+		v.setVid(vid);
+		v.setVname(vname);
+		
+		if(null==id&&"".equals(id)) {
+			Sqlite3Util.insertvideo(v);
+		}else {
+			Sqlite3Util.updatevideo(v);
+		}
+		 model.addAttribute("video",v);
+		 
+		Logger.getLogger(ManageController.class).info("修改視頻完成");
 		
 		session.setAttribute("videolist", Util.videolistformod(session));
 		
