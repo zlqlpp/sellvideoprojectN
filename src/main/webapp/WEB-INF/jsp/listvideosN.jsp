@@ -73,7 +73,7 @@ window.onload=function(){
 						<div class="box">
 							<ul class="list" id="article_list">
 							<c:forEach items="${videolist}" var="v">
-								<li>
+								<li onclick="go('${v.vid}')">
 										<div class="list_img">
 											<img data-savepage-src="" src="/videoimg/${v.vid }.jpg" onerror="" alt="">
 										</div>
