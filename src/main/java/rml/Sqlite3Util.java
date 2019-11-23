@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -61,8 +62,8 @@ public class Sqlite3Util {
 	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
 	      
 	      //statement.executeUpdate("create table video (id integer, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date string,vkind integer)");
-	      
-	       StringBuffer sb = new StringBuffer("insert into video values("+UUID.randomUUID()+", ");
+	      int id = new Long(new Date().getTime()).intValue();
+	       StringBuffer sb = new StringBuffer("insert into video values("+id+", ");
 	       sb.append("'"+v.getVid()+"',");
 	       sb.append("'"+v.getVtitle()+"',");
 	       sb.append("'"+v.getVname()+"',");
