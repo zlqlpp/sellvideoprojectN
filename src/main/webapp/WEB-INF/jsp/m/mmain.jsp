@@ -42,6 +42,7 @@ function go(v){
    			<td    >表id(不用管這列) </td>
    			<td   >视频ID</td>
    			<td    >视频标题+时长</td>
+   			<td    >創建時間</td>
    			<td    >編輯</td>
    			<td    >刪除</td>
    		</tr>
@@ -51,8 +52,9 @@ function go(v){
    			<td height="40px" >${v.id } </td>
    			<td height="40px" >${v.vid } </td>
    			<td height="40px" >${v.vtitle }<c:if test="${! empty v.vlenght}">---(时长:${v.vlenght })</c:if> </td>
-		    <td height="40px" width="40px"  ><a href="/m/vidomod.do?id=${v.id }&vid=${v.vid }&vname=${v.vname }">編輯</a></td>
- 			<td height="40px" width="40px"  ><a href="/m/vidodel.do?vname=${v.vname }">刪除</a></td>
+   			<td height="40px" >${v.crt_date } </td>
+		    <td height="40px"   ><a href="/m/vidomod.do?id=${v.id }&vid=${v.vid }&vname=${v.vname }">編輯</a></td>
+ 			<td height="40px"  ><a href="/m/vidodel.do?vname=${v.vname }">刪除</a></td>
    		</tr>
    		</c:forEach>
    </table>

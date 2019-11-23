@@ -38,6 +38,7 @@ vlog; '
 alias cdapp='cd /root/apache-tomcat-7.0.96/webapps'
 alias cdlog='cd /root/apache-tomcat-7.0.96/logs'
 alias vlog="tail -f /root/apache-tomcat-7.0.96/logs/catalina.out"
+alias cdvideo=" cd ~/youtubedl/;ll"
 
 
 #######.bash_profile

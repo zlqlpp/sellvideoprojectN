@@ -153,9 +153,7 @@ public class ManageController {
 		}
 		
 		Logger.getLogger(ManageController.class).info("刷新视频列表");
-		List vlist = Util.videolistformod(session);
-		Collections.reverse(vlist);
-		session.setAttribute("videolist", vlist);
+		session.setAttribute("videolist", Util.videolistformod(session));
 		
 		return "m/mmain";  
 	}
@@ -251,9 +249,16 @@ public class ManageController {
 		if(prop==null) {
 			prop = Util.getProp(session);
 		}
-		File file = new File(prop.getProperty("videoPath")+vname);
+		File video = new File(prop.getProperty("videoPath")+vname);
 		
-		File[] files = file.listFiles();
+		File[] files = video.listFiles();
+		for(int i=0;i<files.length;i++){
+			files[i].delete();
+		}
+		
+		File img = new File(prop.getProperty("imgPath")+vname);
+		
+		File[] img = video.listFiles();
 		for(int i=0;i<files.length;i++){
 			files[i].delete();
 		}
