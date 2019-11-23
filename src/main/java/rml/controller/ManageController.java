@@ -163,6 +163,7 @@ public class ManageController {
 		
 		String id = request.getParameter("id");
 		String vid = request.getParameter("vid");
+		String vname = request.getParameter("vname");
 		
 		List vlist = null;
 		Video v = null;
@@ -172,6 +173,7 @@ public class ManageController {
 		}else {
 			v = new Video();
 			v.setVid(vid);
+			v.setVname(vname);
 		}
 		 model.addAttribute("video",v);
 		 
@@ -193,16 +195,20 @@ public class ManageController {
 		}
 		String id = request.getParameter("id");
 		String vid = request.getParameter("vid");
-		String vname = request.getParameter("vtitle");
+		String vtitle = request.getParameter("vtitle");
+		String vname = request.getParameter("vname");
 		Logger.getLogger(ManageController.class).info("修改：id:"+id);
 		Logger.getLogger(ManageController.class).info("修改:vid:"+vid);
-		Logger.getLogger(ManageController.class).info("修改:vtitle:"+vname);
+		Logger.getLogger(ManageController.class).info("修改:vtitle:"+vtitle);
+		Logger.getLogger(ManageController.class).info("修改:vname:"+vname);
+		
 		
 		 
 		Video v = new Video(); 
 		v.setId(id);
 		v.setVid(vid);
-		v.setVtitle(vname);
+		v.setVtitle(vtitle);
+		v.setVname(vname);
 		
 		if(null==id||"".equals(id)) {
 			Logger.getLogger(ManageController.class).info("修改: 沒有id,,insert 入庫"  );
