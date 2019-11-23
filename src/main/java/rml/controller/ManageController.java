@@ -193,10 +193,10 @@ public class ManageController {
 		}
 		String id = request.getParameter("id");
 		String vid = request.getParameter("vid");
-		String vname = request.getParameter("vname");
+		String vname = request.getParameter("vtitle");
 		Logger.getLogger(ManageController.class).info("修改：id:"+id);
 		Logger.getLogger(ManageController.class).info("修改:vid:"+vid);
-		Logger.getLogger(ManageController.class).info("修改:vname:"+vname);
+		Logger.getLogger(ManageController.class).info("修改:vtitle:"+vname);
 		
 		 
 		Video v = new Video(); 
