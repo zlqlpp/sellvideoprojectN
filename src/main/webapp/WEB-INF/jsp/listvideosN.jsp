@@ -75,7 +75,7 @@ window.onload=function(){
 							<c:forEach items="${videolist}" var="v">
 								<li onclick="go('${v.vid}')">
 										<div class="list_img">
-											<img data-savepage-src="" src="/videoimg/${v.vid }.jpg" onerror="" alt="">
+											<img data-savepage-src="" src="/videoimg/${v.vid }.jpg" onerror="this.src='/img/null.jpg'" alt="">
 										</div>
 										<div class="list_info">
 											<div >
