@@ -20,9 +20,9 @@ public class Video {
 		this.vtitle = "";
 		this.vname = "";
 		this.vlenght = "";
-		this.vsize = "";
+		this.vsize = "0";
 		this.crt_date = "";
-		this.vkind = "";
+		this.vkind = "0";
 	}
 		public String getId() {
 			return id;
