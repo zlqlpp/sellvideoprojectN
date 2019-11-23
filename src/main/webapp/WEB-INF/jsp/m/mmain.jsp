@@ -42,7 +42,7 @@ function go(v){
   	 <hr/>
   	 
   	 
-	<table border="1" width="70%">
+	<table class="table table-bordered"  width="70%">
 		 <tr>
    			<td    >表id(不用管這列) </td>
    			<td   >视频ID</td>
