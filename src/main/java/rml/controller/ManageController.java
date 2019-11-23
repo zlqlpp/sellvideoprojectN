@@ -49,7 +49,11 @@ import rml.bean.Video;
 public class ManageController {
 
 	
-	
+	@RequestMapping(value="/menu")
+	public String menu(HttpServletRequest request) {
+		
+		return "m/menu";
+	}
 	@RequestMapping(value="/mlogin")
 	public String listUser(HttpServletRequest request) {
 		
