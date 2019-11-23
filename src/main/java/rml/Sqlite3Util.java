@@ -161,7 +161,7 @@ public class Sqlite3Util {
 	    }
 	  }
   
-  public static List selectfromuser() {//----------------------查询表中的所有视频
+  public static List selectfromuser(String seecode) {//----------------------查询表中的所有视频
 	    Connection connection = null;
 	    try {
 	    	 Class.forName("org.sqlite.JDBC");
@@ -170,6 +170,9 @@ public class Sqlite3Util {
 	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
 	      String sql = "select * from user  ";
+	      if(null!=seecode&&!"".equals(seecode)) {
+	    	  sql+=" where seecode='"+seecode+"'";
+	      }
 	      Logger.getLogger(Sqlite3Util.class).info("sql："+ sql); 
 	       ResultSet rs = statement.executeQuery(sql);
 	       List ulist = new ArrayList();
@@ -197,5 +200,38 @@ public class Sqlite3Util {
 	      }
 	    }
 	    return null;
+	  }
+  public static void updateuser(User u) {   //----------------------创建观看码实体
+	    Connection connection = null;
+	    try {
+	    	 Class.forName("org.sqlite.JDBC");
+	      connection = DriverManager.getConnection("jdbc:sqlite:/root/youtubedl/video.db");
+	      Statement statement = connection.createStatement();
+	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
+	      
+	      //statement.executeUpdate("create table user (id integer, seecode string,count integer,crt_date string)");
+	      
+	      int id = new Long(new Date().getTime()).intValue();
+	       StringBuffer sb = new StringBuffer("update user set count="+u.getCount()+" where u.id="+u.getId()); 
+ 
+	       
+	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
+	      int ret = statement.executeUpdate(sb.toString());
+	      
+	      Logger.getLogger(Sqlite3Util.class).info("sql-ret："+ ret); 
+	       
+	    }
+	    catch(Exception e) {
+	    	 e.printStackTrace();
+	    }
+	    finally {
+	      try {
+	        if(connection != null)
+	          connection.close();
+	      }
+	      catch(SQLException e) {
+	    	  e.printStackTrace();
+	      }
+	    }
 	  }
 }

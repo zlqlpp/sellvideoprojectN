@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
 <script type="text/javascript">
 function go(v){
-	document.getElementById('video').value=v;
+	document.getElementById('vid').value=v;
 	var form = document.getElementById('f');
 	 
 	form.submit();
@@ -155,7 +155,7 @@ body {background: #FFF; background-image:none; line-height: 130%; font-size: 10p
 <div class="box"><a href="#" title="招代理">招代理</a> </div>
 <div class="tz pbn"><a href="#" >用户：${user.code },剩余观看次数：${user.count }</a></div>
   	 <form action="/c/openvideo.do" method="get"  id="f">
-  	 	<input type="hidden" id="video" name="video" />
+  	 	<input type="hidden" id="vid" name="vid" />
   	 	<input type="hidden" id="wb" name="wb" />
   	 </form>
 <!--//forumdisplay_list template start-->
@@ -164,7 +164,7 @@ body {background: #FFF; background-image:none; line-height: 130%; font-size: 10p
         	<div class="bm_h">天天看(客服vx:ttktiantiankan)  </div>
         	<c:forEach items="${videolist}" var="v">
                             	       <div class="bm_c">
-                                          <a href="#"  style="font-weight: bold;color: #8F2A90" onclick="go('${v.vname}')">
+                                          <a href="#"  style="font-weight: bold;color: #8F2A90" onclick="go('${v.vid}')">
                                               ${v.vtitle }---(时长:${v.vlenght })</a>
                                           <br />
 										  <span class="xg1">

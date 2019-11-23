@@ -12,13 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  
 <script type="text/javascript">
-function go(v){
-	document.getElementById('video').value=v;
-	var form = document.getElementById('f');
-	 
-	form.submit();
-	 
-}
+ 
 
 window.onload=function(){
  
@@ -160,7 +154,7 @@ body {background: #FFF; background-image:none; line-height: 130%; font-size: 10p
         	<div class="bm_h">天天看(客服vx:ttktiantiankan)  </div>
 			
 			<a href="/c/listvideos.do"><h3>返回列表</h3></a>
-        	<iframe src='/video/${video }' frameborder='0' width='auto' height='auto' allowfullscreen='true'  ></iframe>
+        	<iframe src='/video/${vname }' frameborder='0' width='auto' height='auto' allowfullscreen='true'  ></iframe>
        </div>
   </div>
  
