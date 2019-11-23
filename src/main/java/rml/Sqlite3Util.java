@@ -12,6 +12,7 @@ import java.util.UUID;
 
 import org.apache.log4j.Logger;
 
+import rml.bean.User;
 import rml.bean.Video;
 
 public class Sqlite3Util {
@@ -24,22 +25,14 @@ public class Sqlite3Util {
       statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
       statement.executeUpdate("drop table if exists user");
-      statement.executeUpdate("create table user (id integer, seecode string,count integer,crt_date string)");
-      //statement.executeUpdate("insert into person values(1, 'leo')");
-      //statement.executeUpdate("insert into person values(2, 'yui')");
+      statement.executeUpdate("create table user (id integer, seecode string,count double,crt_date string)");
+
       statement.executeUpdate("drop table if exists video");
       statement.executeUpdate("create table video (id integer, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date string,vkind integer)");
-      //statement.executeUpdate("insert into person values(1, 'leo')");
-      //statement.executeUpdate("insert into person values(2, 'yui')");
-      connection.commit();
-      /*ResultSet rs = statement.executeQuery("select * from person");
-      while(rs.next()) {
-        System.out.println("name = " + rs.getString("name"));
-        System.out.println("id = " + rs.getInt("id"));
-      }*/
+
     }
     catch(Exception e) {
-      System.err.println(e.getMessage());
+    	 e.printStackTrace();
     }
     finally {
       try {
@@ -47,13 +40,13 @@ public class Sqlite3Util {
           connection.close();
       }
       catch(SQLException e) {
-        System.err.println(e.getMessage());
+       e.printStackTrace();
       }
     }
   }
   
   
-  public static void insertuser(Video v) {   //----------------------下载完视频后插入表中
+  public static void insertvideo(Video v) {   //----------------------下载完视频后插入表中
 	    Connection connection = null;
 	    try {
 	    	 Class.forName("org.sqlite.JDBC");
@@ -73,12 +66,12 @@ public class Sqlite3Util {
 	       sb.append( v.getVkind()+")" );
 	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
 	      int ret = statement.executeUpdate(sb.toString());
-	      connection.commit();
+	      
 	      Logger.getLogger(Sqlite3Util.class).info("sql-ret："+ ret); 
 	       
 	    }
 	    catch(Exception e) {
-	      System.err.println(e.getMessage());
+	    	 e.printStackTrace();
 	    }
 	    finally {
 	      try {
@@ -86,12 +79,12 @@ public class Sqlite3Util {
 	          connection.close();
 	      }
 	      catch(SQLException e) {
-	        System.err.println(e.getMessage());
+	    	  e.printStackTrace();
 	      }
 	    }
 	  }
   
-  public static List selectfromvide(String vids) {//--------------------------
+  public static List selectfromvide(String vids) {//----------------------查询表中的所有视频
 	    Connection connection = null;
 	    try {
 	    	 Class.forName("org.sqlite.JDBC");
@@ -119,14 +112,88 @@ public class Sqlite3Util {
 	      Logger.getLogger(Sqlite3Util.class).info("sql--select ret count："+ vlist.size()); 
 	      return vlist;
 	    } catch(Exception e) {
-	      System.err.println(e.getMessage());
+	    	 e.printStackTrace();
 	    } finally {
 	      try {
 	        if(connection != null)
 	          connection.close();
 	      }
 	      catch(SQLException e) {
-	        System.err.println(e.getMessage());
+	    	  e.printStackTrace();
+	      }
+	    }
+	    return null;
+	  }
+  
+  public static void insertuser(User u) {   //----------------------创建观看码实体
+	    Connection connection = null;
+	    try {
+	    	 Class.forName("org.sqlite.JDBC");
+	      connection = DriverManager.getConnection("jdbc:sqlite:/root/youtubedl/video.db");
+	      Statement statement = connection.createStatement();
+	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
+	      
+	      //statement.executeUpdate("create table user (id integer, seecode string,count integer,crt_date string)");
+	      
+	      int id = new Long(new Date().getTime()).intValue();
+	       StringBuffer sb = new StringBuffer("insert into user values("+id+", ");
+	       sb.append("'"+u.getCode()+"',");
+	       sb.append(u.getCount()+",");
+	       sb.append("'"+u.getCrtDate()+"')");
+	       
+	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
+	      int ret = statement.executeUpdate(sb.toString());
+	      
+	      Logger.getLogger(Sqlite3Util.class).info("sql-ret："+ ret); 
+	       
+	    }
+	    catch(Exception e) {
+	    	 e.printStackTrace();
+	    }
+	    finally {
+	      try {
+	        if(connection != null)
+	          connection.close();
+	      }
+	      catch(SQLException e) {
+	    	  e.printStackTrace();
+	      }
+	    }
+	  }
+  
+  public static List selectfromuser() {//----------------------查询表中的所有视频
+	    Connection connection = null;
+	    try {
+	    	 Class.forName("org.sqlite.JDBC");
+	      connection = DriverManager.getConnection("jdbc:sqlite:/root/youtubedl/video.db");
+	      Statement statement = connection.createStatement();
+	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
+
+	      String sql = "select * from user  ";
+	      Logger.getLogger(Sqlite3Util.class).info("sql："+ sql); 
+	       ResultSet rs = statement.executeQuery(sql);
+	       List ulist = new ArrayList();
+	       User u = null;
+	      while(rs.next()) {
+	    	  u = new User();
+	    	  u.setId(rs.getInt("id"));
+	    	  u.setCode(rs.getString("seecode"));
+	    	  u.setCount(rs.getDouble("count"));
+	    	  u.setCrtDate(rs.getString("crt_date"));
+	    	   
+	         ulist.add(u);
+	      } 
+	      Logger.getLogger(Sqlite3Util.class).info("sql--select ret count："+ ulist.size()); 
+	      return ulist;
+	    } catch(Exception e) {
+	    	 e.printStackTrace();
+	    } finally {
+	      try {
+	        if(connection != null)
+	          connection.close();
+	      }
+	      catch(SQLException e) {
+	    	  e.printStackTrace();
 	      }
 	    }
 	    return null;

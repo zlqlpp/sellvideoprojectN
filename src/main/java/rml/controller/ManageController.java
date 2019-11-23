@@ -36,7 +36,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 
 import redis.clients.jedis.Jedis;
-import rml.RedisUtil;
+//import rml.RedisUtil;
 import rml.Sqlite3Util;
 import rml.Util;
 import rml.bean.User;
@@ -190,36 +190,17 @@ public class ManageController {
 		String count = request.getParameter("count");
 		Date date = new Date();
 		Long code = date.getTime();
+		
 		User user = new User();
 		user.setCode(code.toString());
 		user.setCount(Double.parseDouble(count));
 		user.setCrtDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date));
 		
-		Jedis jedis = RedisUtil.getJedis();
-		
-		
-		
-		String str = jedis.get("codemap");
-		Map map = new HashMap();
-		if(StringUtils.isNotBlank(str)){
-		    map = JSON.parseObject(str,HashMap.class);
-		}
-		map.put(user.getCode(), user);
-		jedis.set("codemap", JSON.toJSONString(map));
-		
-		
-		str = jedis.get("codelist");
-		List codelist = new ArrayList();
-		if(StringUtils.isNotBlank(str)){
-		    codelist = JSON.parseObject(str,ArrayList.class);
-		}
-			codelist.add(user);
-		jedis.set("codelist", JSON.toJSONString(codelist));
+		 Sqlite3Util.insertuser(user);
 		
 		
 		Logger.getLogger(ManageController.class).info("创建观看码,code:"+user.getCode()+",观看次数，count:"+user.getCount()+",并存放redis,一份map,一份list");
 
-		RedisUtil.returnResource(jedis);
 		
 		model.addAttribute("newcode", user.getCode());
 		
@@ -233,23 +214,18 @@ public class ManageController {
 		}
 		
 		Logger.getLogger(ManageController.class).info("列出所有观看码");
-		//readCodes(session);
 		
-		Jedis jedis = RedisUtil.getJedis();
-		String str = jedis.get("codelist");
 		
 		List codelist = new ArrayList();
-		if(StringUtils.isNotBlank(str)){
-		    codelist = JSON.parseObject(str,ArrayList.class);
-		}
-		RedisUtil.returnResource(jedis);
+		codelist = Sqlite3Util.selectfromuser();
+		 
 		Collections.reverse(codelist);
 		model.addAttribute("passwdlist",codelist);
 		
 		return "m/crtpasswd";  
 	}
 	
-	@RequestMapping(value="/ts")
+	@RequestMapping(value="/initdb")
 	public String ts(Model model,HttpServletRequest request,HttpSession session) {
  
 		
@@ -388,7 +364,7 @@ class MusicImplements implements Runnable{
 		jedis.set("videolist",JSON.toJSONString(vlist));
 		      
 		RedisUtil.returnResource(jedis);*/
-    	Sqlite3Util.insertuser(v);
+    	Sqlite3Util.insertvideo(v);
 		Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...已写入sqlite3..." ); 
     	 
     }  

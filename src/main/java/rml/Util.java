@@ -44,7 +44,49 @@ public  class Util {
 			}
 			return false;
 		}
-		
+	    public static List getVideoListFromFileAndDB(HttpSession session){
+	    	 
+	    	Properties prop = (Properties) session.getAttribute("prop");
+			if(prop==null) {
+				prop = getProp(session);
+			}
+			
+			List vlist = new ArrayList();    
+			
+			File file = new File(prop.getProperty("videoPath"));
+	        File[] fileNamesArray = file.listFiles();
+	        
+	        Map map = new HashMap<String,String>();
+	        String vids="";
+	        if(null != fileNamesArray){
+	        for (int i = 0; i < fileNamesArray.length; i++) {
+	            if (fileNamesArray[i].isFile()) {
+	            	if(vids.equals("")) {
+	            		vids = "'"+fileNamesArray[i].getName().split("\\.")[0]+"'" ;
+	            	}else {
+	            		vids+=",'"+fileNamesArray[i].getName().split("\\.")[0]+"'" ;
+	            	}
+	            }
+	        }
+	        }
+	        return  Sqlite3Util.selectfromvide(vids);
+	        
+	    }
+ 
+	    
+	    public static Properties getProp(HttpSession session){
+	      	 
+	    	String path3 = Thread.currentThread().getContextClassLoader().getResource("").getPath()+"config.properties"; 
+	        Properties prop = new Properties();
+	        try {
+				prop.load(new FileInputStream(path3));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	        session.setAttribute("prop", prop);
+	        return prop;
+	        
+	    }
 /*	    public static List getVideoListFromTxt(HttpSession session){
 	    	 
 	    	Properties prop = (Properties) session.getAttribute("prop");
@@ -113,51 +155,5 @@ public  class Util {
 	        return newvlist;
 	        
 	    }*/
-	    public static List getVideoListFromFileAndDB(HttpSession session){
-	    	 
-	    	Properties prop = (Properties) session.getAttribute("prop");
-			if(prop==null) {
-				prop = getProp(session);
-			}
-			
-			List vlist = new ArrayList();    
-			
-			File file = new File(prop.getProperty("videoPath"));
-	        File[] fileNamesArray = file.listFiles();
-	        
-	        Map map = new HashMap<String,String>();
-	        String vids="";
-	        if(null != fileNamesArray){
-	        for (int i = 0; i < fileNamesArray.length; i++) {
-	            if (fileNamesArray[i].isFile()) {
-	            	if(vids.equals("")) {
-	            		vids = "'"+fileNamesArray[i].getName().split("\\.")[0]+"'" ;
-	            	}else {
-	            		vids+=",'"+fileNamesArray[i].getName().split("\\.")[0]+"'" ;
-	            	}
-	            }
-	        }
-	        }
-	        return  Sqlite3Util.selectfromvide(vids);
-	        
-	    }
- 
-	    
-	    public static Properties getProp(HttpSession session){
-	      	 
-	    	String path3 = Thread.currentThread().getContextClassLoader().getResource("").getPath()+"config.properties"; 
-	 
-	        Properties prop = new Properties();
-	 
-	        try {
-				prop.load(new FileInputStream(path3));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	        
-	        session.setAttribute("prop", prop);
-	        
-	        return prop;
-	        
-	    }
+
 }

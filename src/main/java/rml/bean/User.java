@@ -1,7 +1,13 @@
 package rml.bean;
 
 public class User {
-
+	private Integer id;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	private String code; //观看码
 	private Double count;   //观看次数
 	private String crtDate;
