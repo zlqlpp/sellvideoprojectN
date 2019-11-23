@@ -258,7 +258,7 @@ public class ManageController {
 		
 		File img = new File(prop.getProperty("imgPath")+vname);
 		
-		File[] img = video.listFiles();
+		files = img.listFiles();
 		for(int i=0;i<files.length;i++){
 			files[i].delete();
 		}
