@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -184,10 +185,18 @@ public class ManageController {
 		if(!Util.ifMLogin(session)){
 			return "m/mlogin";
 		}
-		
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String id = request.getParameter("id");
 		String vid = request.getParameter("vid");
 		String vname = request.getParameter("vname");
+		Logger.getLogger(ManageController.class).info("修改：id:"+id);
+		Logger.getLogger(ManageController.class).info("修改:vid:"+vid);
+		Logger.getLogger(ManageController.class).info("修改:vname:"+vname);
 		
 		 
 		Video v = new Video(); 
@@ -195,9 +204,11 @@ public class ManageController {
 		v.setVid(vid);
 		v.setVname(vname);
 		
-		if(null==id&&"".equals(id)) {
+		if(null==id||"".equals(id)) {
+			Logger.getLogger(ManageController.class).info("修改: 沒有id,,insert 入庫"  );
 			Sqlite3Util.insertvideo(v);
 		}else {
+			Logger.getLogger(ManageController.class).info("修改:有id,,update更新數據:" );
 			Sqlite3Util.updatevideo(v);
 		}
 		 model.addAttribute("video",v);
