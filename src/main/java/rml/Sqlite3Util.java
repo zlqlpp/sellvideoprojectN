@@ -30,7 +30,7 @@ public class Sqlite3Util {
       statement.executeUpdate("create table video (id integer, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date string,vkind integer)");
       //statement.executeUpdate("insert into person values(1, 'leo')");
       //statement.executeUpdate("insert into person values(2, 'yui')");
-      
+      connection.commit();
       /*ResultSet rs = statement.executeQuery("select * from person");
       while(rs.next()) {
         System.out.println("name = " + rs.getString("name"));
@@ -72,6 +72,7 @@ public class Sqlite3Util {
 	       sb.append( v.getVkind()+")" );
 	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
 	      int ret = statement.executeUpdate(sb.toString());
+	      connection.commit();
 	      Logger.getLogger(Sqlite3Util.class).info("sql-ret："+ ret); 
 	       
 	    }
