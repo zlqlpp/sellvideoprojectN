@@ -56,7 +56,7 @@ function go(v){
    			<td height="40px" >${v.id } </td>
    			<td height="40px" >${v.vid } </td>
    			<td height="40px" >${v.vtitle }-${v.vlenght }</td>
-		    <td height="40px" width="40px"  ><a href="/m/vidomod.do?id=${v.id }&vid=${v.vid }&&&vname=${v.vname }">編輯</a></td>
+		    <td height="40px" width="40px"  ><a href="/m/vidomod.do?id=${v.id }&vid=${v.vid }&vname=${v.vname }">編輯</a></td>
  			<td height="40px" width="40px"  ><a href="#">刪除</a></td>
    		</tr>
    		</c:forEach>
