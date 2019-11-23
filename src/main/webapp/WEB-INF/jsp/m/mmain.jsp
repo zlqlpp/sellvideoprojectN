@@ -43,13 +43,21 @@ function go(v){
   	 
   	 
 	<table border="1" width="70%">
- 
+		 <tr>
+   			<td    >表id(不用管這列) </td>
+   			<td   >视频ID</td>
+   			<td    >视频标题+时长</td>
+   			<td    >編輯</td>
+   			<td    >刪除</td>
+   		</tr>
+   		
    		<c:forEach items="${videolist}" var="v">
    		<tr>
-   			<td height="40px"  onclick="go('${v.id }')">${v.id } </td>
-   			<td height="40px"  onclick="go('${v.vid }')">${v.vid } </td>
-   			<td height="40px"  onclick="go('${v.vname }')">${v.vtitle }-${v.vlenght }</td>
- 
+   			<td height="40px" >${v.id } </td>
+   			<td height="40px" >${v.vid } </td>
+   			<td height="40px" >${v.vtitle }-${v.vlenght }</td>
+		    <td height="40px"  onclick="go('${v.vname }')"><a>編輯</a></td>
+ 			<td height="40px"  onclick="go('${v.vname }')"><a>刪除</a></td>
    		</tr>
    		</c:forEach>
    </table>
