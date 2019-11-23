@@ -36,7 +36,7 @@ import rml.bean.Video;
 
 @Controller
 @RequestMapping("/c")
-public class MUserController {
+public class ClientController {
 
 	
 	@RequestMapping(value="/index")
@@ -54,16 +54,12 @@ public class MUserController {
 	public String listvideos(Model model,HttpServletRequest request,HttpSession session) {
 		
 		String code = request.getParameter("ucode");
-		Logger.getLogger(MUserController.class).info("登录-- 前台传入的观看码为："+code);
+		Logger.getLogger(ClientController.class).info("登录-- 前台传入的观看码为："+code);
 		
 		
-		//从session里读视频 ，没有就读一下目录
-		/*List videolist =    (List) session.getAttribute("videolist");
-		if(null==videolist){
-			videolist = getVideoListFromTxt(session);
-		}*/
-		List videolist = Util.getVideoListFromTxt(session);
-		Logger.getLogger(MUserController.class).info("登录--读视频列表， 从文件读。完成：" );
+
+		List videolist = Util.getVideoListFromFileAndDB(session);
+		Logger.getLogger(ClientController.class).info("登录--读视频列表， 从文件读。完成：" );
 		
 		
 		Jedis jedis = RedisUtil.getJedis();
@@ -78,7 +74,7 @@ public class MUserController {
 		if(code!=null){
 				if(codemap.containsKey(code)){
 					user = JSON.parseObject(codemap.get(code).toString(),User.class)  ;
-					Logger.getLogger(MUserController.class).info("登录--redis的codemap中存在此观看码" );
+					Logger.getLogger(ClientController.class).info("登录--redis的codemap中存在此观看码" );
 					session.setAttribute("user", user);
 				}else{
 					 return "index";

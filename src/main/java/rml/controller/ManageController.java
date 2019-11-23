@@ -100,7 +100,7 @@ public class ManageController {
 		 String reqeustT = request.getParameter("t");
 		 if(null!=reqeustT&&t-Long.parseLong(reqeustT)<300000){
 			 
-			 model.addAttribute("videolist",Util.getVideoListFromTxt(session));
+			 model.addAttribute("videolist",Util.getVideoListFromFileAndDB(session));
 			 return "m/crtggdetail";
 		 }
 		 
@@ -149,7 +149,7 @@ public class ManageController {
 		
 		Logger.getLogger(ManageController.class).info("刷新视频列表");
 		
-		session.setAttribute("videolist", Util.getVideoListFromTxt( session));
+		session.setAttribute("videolist", Util.getVideoListFromFileAndDB(session));
 		
 		return "m/mmain";  
 	}
@@ -254,7 +254,7 @@ public class ManageController {
  
 		
 		Logger.getLogger(ManageController.class).info("测试sqlite3连接");
-		Sqlite3Util.testsqlite();
+		Sqlite3Util.initdb();                
 		return "t";  
 	}
 	
@@ -285,10 +285,10 @@ class MusicImplements implements Runnable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		String id = processList.get(0).toString();
-		Logger.getLogger(MusicImplements.class).info("视频下载---视频id："+processList.get(0).toString() );
+		Logger.getLogger(MusicImplements.class).info("视频下载---视频id："+id );
  
+		
           processList = new ArrayList<String>();
 		try {
 			Process p = Runtime.getRuntime().exec("youtube-dl --get-title "+durl);
@@ -303,8 +303,26 @@ class MusicImplements implements Runnable{
 			e.printStackTrace();
 		}
 		String title = processList.get(0).toString();
-		Logger.getLogger(MusicImplements.class).info("视频下载---视频名字："+ processList.get(0).toString());  
-		//--get-duration
+		Logger.getLogger(MusicImplements.class).info("视频下载---视频名字："+ title);  
+		
+		
+        processList = new ArrayList<String>();
+		try {
+			Process p = Runtime.getRuntime().exec("ll "+id+"*");
+			p.waitFor();
+			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line = "";
+			while ((line = input.readLine()) != null) {
+				processList.add(line);
+			}
+			input.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String fullname = processList.get(0).toString();
+		Logger.getLogger(MusicImplements.class).info("视频下载---下载后的文件名："+ fullname); 
+
+
         processList = new ArrayList<String>();
 		try {
 			Process p = Runtime.getRuntime().exec("youtube-dl --get-duration "+durl);
@@ -321,10 +339,21 @@ class MusicImplements implements Runnable{
 		String length = processList.get(0).toString();
 		Logger.getLogger(MusicImplements.class).info("视频下载---视频时长："+ processList.get(0).toString()); 
 		
+		
 		Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...进行中..." );
         try {
         	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(title)s.%(ext)s "+durl);
-        	Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"%(id)s.%(ext)s "+durl);
+        	Process pro = Runtime.getRuntime().exec("youtube-dl -o --write-thumbnail "+p.getProperty("videoPath")+"%(id)s.%(ext)s "+durl);
+        	pro.waitFor();
+        } catch ( Exception e) {
+            e.printStackTrace();
+        }
+        Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...完成..." );
+        
+         
+        try {
+        	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(title)s.%(ext)s "+durl);
+        	Process pro = Runtime.getRuntime().exec("youtube-dl --write-thumbnail --skip-download -o "+p.getProperty("imgPath")+"%(id)s.%(ext)s "+durl);
         	pro.waitFor();
         } catch ( Exception e) {
             e.printStackTrace();
@@ -340,10 +369,10 @@ class MusicImplements implements Runnable{
         Video v = new Video();
     	v.setVtitle(title);
     	v.setVid(id);
-    	v.setVname("");
+    	v.setVname(fullname);
     	v.setVlenght(length);
     	
-    	Jedis jedis = RedisUtil.getJedis();
+    	/*Jedis jedis = RedisUtil.getJedis();
 		String videolist = jedis.get("videolist");
 		
 		List vlist = new ArrayList();
@@ -354,8 +383,8 @@ class MusicImplements implements Runnable{
 		vlist.add(v);
 		jedis.set("videolist",JSON.toJSONString(vlist));
 		      
-		RedisUtil.returnResource(jedis);
-		Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...已写入redis..." ); 
+		RedisUtil.returnResource(jedis);*/
+		Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...已写入sqlite3..." ); 
     	 
     }  
 } 

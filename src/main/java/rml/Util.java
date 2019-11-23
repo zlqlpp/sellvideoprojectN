@@ -25,7 +25,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import rml.bean.Video;
-import rml.controller.MUserController;
+import rml.controller.ClientController;
 
 
 public  class Util {
@@ -45,7 +45,7 @@ public  class Util {
 			return false;
 		}
 		
-	    public static List getVideoListFromTxt(HttpSession session){
+/*	    public static List getVideoListFromTxt(HttpSession session){
 	    	 
 	    	Properties prop = (Properties) session.getAttribute("prop");
 			if(prop==null) {
@@ -112,52 +112,36 @@ public  class Util {
 	        
 	        return newvlist;
 	        
-	    }
-	   /* public static String readCodes(HttpSession session){
-	     	 
+	    }*/
+	    public static List getVideoListFromFileAndDB(HttpSession session){
+	    	 
 	    	Properties prop = (Properties) session.getAttribute("prop");
 			if(prop==null) {
 				prop = getProp(session);
 			}
-	        List passwdlist = new ArrayList();
-	        String codeString= "";
-	        if(prop.getProperty("passwdPath") == null) {
-	    		return null;
-	    	}
-	    	File file = new File(prop.getProperty("passwdPath"));
-	    	
-	        BufferedReader reader = null;
-	        try {
-	             
-	            reader = new BufferedReader(new FileReader(file));
-	            String tempString = "";
-	            int line = 1;
-	            // 一次读入一行，直到读入null为文件结束
-	            while ((tempString = reader.readLine()) != null) {
-	                // 显示行号
-	                //System.out.println("line " + line + ": " + tempString);
-	                passwdlist.add(tempString);
-	                codeString+=","+tempString;
-	                line++;
-	            }
-	            reader.close();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        } finally {
-	            if (reader != null) {
-	                try {
-	                    reader.close();
-	                } catch (IOException e1) {
-	                }
+			
+			List vlist = new ArrayList();    
+			
+			File file = new File(prop.getProperty("videoPath"));
+	        File[] fileNamesArray = file.listFiles();
+	        
+	        Map map = new HashMap<String,String>();
+	        String vids="";
+	        if(null != fileNamesArray){
+	        for (int i = 0; i < fileNamesArray.length; i++) {
+	            if (fileNamesArray[i].isFile()) {
+	            	if(vids.equals("")) {
+	            		vids = "'"+fileNamesArray[i].getName().split("\\.")[0]+"'" ;
+	            	}else {
+	            		vids+=",'"+fileNamesArray[i].getName().split("\\.")[0]+"'" ;
+	            	}
 	            }
 	        }
+	        }
+	        return  Sqlite3Util.selectfromvide(vids);
 	        
-	        session.setAttribute("passwdlist", passwdlist);
-	        session.setAttribute("codes", codeString);
-	        
-	        return codeString;
-	        
-	    }*/
+	    }
+ 
 	    
 	    public static Properties getProp(HttpSession session){
 	      	 

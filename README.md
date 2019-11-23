@@ -18,17 +18,17 @@
 
 mkdir /root/git_zlq/;
 cd /root/git_zlq/;
-git clone https://github.com/zlqlpp/sellvideoproject.git;
+git clone https://github.com/zlqlpp/sellvideoprojectN.git;
 
 ######## ~/.sysconfig
-alias go='cd /root/git_zlq/sellvideoproject;                                                         \
+alias go='cd /root/git_zlq/sellvideoprojectN;                                                         \
 git pull;                                                                                            \
 mvn clean package;                                                                                   \
 /root/apache-tomcat-7.0.96/bin/shutdown.sh;                                                          \
-rm -rf /root/apache-tomcat-7.0.96/webapps/zhi*;                                                      \
+rm -rf /root/apache-tomcat-7.0.96/webapps/sel*;                                                      \
 rm -rf /root/apache-tomcat-7.0.96/webapps/ROOT;                                                      \
 rm -rf /root/apache-tomcat-7.0.96/logs/*;                                                            \
-cp /root/git_zlq/sellvideoproject/target/zhibing_mybatis.war /root/apache-tomcat-7.0.96/webapps;     \
+cp /root/git_zlq/sellvideoprojectN/target/sellvideoprojectN.war /root/apache-tomcat-7.0.96/webapps;     \
 rm -rf /root/apache-tomcat-7.0.96/work/*;                                                            \
 rm -rf /root/apache-tomcat-7.0.96/temp/*;                                                            \
 rm -rf /var/lib/tomcat/webapps/*;                                                                    \
@@ -56,8 +56,9 @@ mkdir /root/youtubedl/img;
 
 修改tomcat  端口80 
 host 修改成 域名
-<Context path="/" docBase="/root/apache-tomcat-7.0.96/webapps/zhibing_mybatis"  reloadable="true" />
+<Context path="/" docBase="/root/apache-tomcat-7.0.96/webapps/sellvideoprojectN"  reloadable="true" />
 <Context path="/video" docBase="/root/youtubedl/video"  reloadable="true" />
+<Context path="/videoimg" docBase="/root/youtubedl/img"  reloadable="true" />
 
 
 
