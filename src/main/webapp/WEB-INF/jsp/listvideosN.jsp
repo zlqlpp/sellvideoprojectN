@@ -78,9 +78,9 @@ window.onload=function(){
 											<img data-savepage-src="" src="/videoimg/${v.vid }.jpg" onerror="" alt="">
 										</div>
 										<div class="list_info">
-											<div onclick="go('${v.vid}')">
+											<div >
 												<font color="Red"><p style="font-size: 11px;"> 已有2053人付款<b>5</b>元观看 </p></font>
-												${v.vtitle }---(时长:${v.vlenght })
+												<div onclick="go('${v.vid}')">${v.vtitle }---(时长:${v.vlenght })</div>
 											</div>
 										</div>
 								</a></li>
