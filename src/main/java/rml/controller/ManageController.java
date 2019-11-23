@@ -37,6 +37,7 @@ import com.alibaba.fastjson.JSON;
 
 import redis.clients.jedis.Jedis;
 import rml.RedisUtil;
+import rml.Sqlite3Util;
 import rml.Util;
 import rml.bean.User;
 import rml.bean.Video;
@@ -248,164 +249,15 @@ public class ManageController {
 		return "m/crtpasswd";  
 	}
 	
-	//---------------------------------------工具方法-------------------------
-
-/*	private Map getVideoListTmp(HttpSession session){
-   	 
-    	Properties prop = (Properties) session.getAttribute("prop");
-		if(prop==null) {
-			prop = getProp(session);
-		}
-        
-        
-    	File file = new File(prop.getProperty("videoPath"));
-        File[] fileNamesArray = file.listFiles();
-        
-        //List<String> videolist = new ArrayList<String>();
-        Map map = new HashMap<String,String>();
-        if(null == fileNamesArray){return map;}
-        for (int i = 0; i < fileNamesArray.length; i++) {
-            if (fileNamesArray[i].isFile() ) {
-            	//videolist.add( fileNamesArray[i].getName() );
-            	map.put(fileNamesArray[i].getName().split("\\.")[0], fileNamesArray[i].getName());
-            }
-        }
-        
-        //session.setAttribute("videolist", videolist);
-        
-        return map;
-    }
-    private List getVideoListFromTxt(HttpSession session){
-    	 
-    	Properties prop = (Properties) session.getAttribute("prop");
-		if(prop==null) {
-			prop = getProp(session);
-		}
-		
-		Map map = getVideoListTmp(session);
-		
-        List videolist = new ArrayList();
-        
-        if(prop.getProperty("videoNamePath") == null) {
-    		return null;
-    	}
-    	File file = new File(prop.getProperty("videoNamePath"));
-    	
-        BufferedReader reader = null;
-        try {
-             
-            reader = new BufferedReader(new FileReader(file));
-            String tempString = null;
-            int line = 1;
-            Video v = null;
-            // 一次读入一行，直到读入null为文件结束
-            while ((tempString = reader.readLine()) != null) {
-                // 显示行号
-                //System.out.println("line " + line + ": " + tempString);
-            	v = new Video();
-            	v.setVtitle(tempString.split("--------")[0]);
-            	v.setVid(tempString.split("--------")[1]);
-            	v.setVname((null==map.get(tempString.split("--------")[1]))?"":map.get(tempString.split("--------")[1]).toString());
-            	v.setVlenght(tempString.split("--------")[2]);
-            	videolist.add(v);
-                 
-                line++;
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e1) {
-                }
-            }
-        }
-        
-        session.setAttribute("videolist", videolist);
-        
-        return videolist;
-        
-    }
-    
-    private String readCodes(HttpSession session){
-      	 
-    	Properties prop = (Properties) session.getAttribute("prop");
-		if(prop==null) {
-			prop = getProp(session);
-		}
-        List passwdlist = new ArrayList();
-        String codeString= "";
-        
-        if(prop.getProperty("passwdPath") == null) {
-    		return null;
-    	}
-        
-    	File file = new File(prop.getProperty("passwdPath"));
-    	
-    	
-        BufferedReader reader = null;
-        try {
-             
-            reader = new BufferedReader(new FileReader(file));
-            String tempString = null;
-            int line = 1;
-            // 一次读入一行，直到读入null为文件结束
-            while ((tempString = reader.readLine()) != null) {
-                // 显示行号
-                //System.out.println("line " + line + ": " + tempString);
-                passwdlist.add(tempString);
-                codeString+=tempString;
-                line++;
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e1) {
-                }
-            }
-        }
-        Collections.reverse(passwdlist);
-        session.setAttribute("passwdlist", passwdlist);
-        return codeString;
-    }
-    private String writeCodes(HttpSession session){
-     	 Long passwd = new Date().getTime();
-     	Properties prop = (Properties) session.getAttribute("prop");
-		if(prop==null) {
-			prop = getProp(session);
-		}
-		Logger.getLogger(ManageController.class).info("将新观看码写入文件："+"echo '"+passwd.toString()+"' >>"+ prop.getProperty("passwdPath"));
-    	 
-		Thread thread = new Thread(new WritePasswd(passwd.toString(),prop));
-		thread.start();
-         
-		 
-        return passwd.toString();
-    }
-    
-    private Properties getProp(HttpSession session){
-      	 
-    	String path3 = Thread.currentThread().getContextClassLoader().getResource("").getPath()+"config.properties"; 
+	@RequestMapping(value="/ts")
+	public String ts(Model model,HttpServletRequest request,HttpSession session) {
  
-        Properties prop = new Properties();
- 
-        try {
-			prop.load(new FileInputStream(path3));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-        
-        session.setAttribute("prop", prop);
-        
-        return prop;
-        
-    }*/
+		
+		Logger.getLogger(ManageController.class).info("测试sqlite3连接");
+		Sqlite3Util.testsqlite();
+		return "t";  
+	}
+	
 }
 
 
@@ -504,29 +356,11 @@ class MusicImplements implements Runnable{
 		      
 		RedisUtil.returnResource(jedis);
 		Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...已写入redis..." ); 
-    	//--get-duration  获取时长
+    	 
     }  
 } 
 
-/*class WritePasswd implements Runnable{  
-	private String passwd = "";
-	private Properties p;
-	public WritePasswd(String passwd,Properties p) {
-		this.passwd = passwd;
-		this.p = p;
-	}
-	
-    public void run() {  
-    	try {
-         	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(id)s.%(ext)s "+durl);
-         	Process pro = Runtime.getRuntime().exec(new String[] {"/bin/sh", "-c","echo "+passwd.toString()+" >>"+ p.getProperty("passwdPath")}) ;
-         	pro.waitFor();
-         } catch ( Exception e) {
-             e.printStackTrace();
-         }
-          
-    }  
-} */
+ 
 
 class CleanVideo implements Runnable{  
 	private Properties p;
