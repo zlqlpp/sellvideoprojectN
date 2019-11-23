@@ -202,7 +202,7 @@ public class ManageController {
 		Video v = new Video(); 
 		v.setId(id);
 		v.setVid(vid);
-		v.setVname(vname);
+		v.setVtitle(vname);
 		
 		if(null==id||"".equals(id)) {
 			Logger.getLogger(ManageController.class).info("修改: 沒有id,,insert 入庫"  );
