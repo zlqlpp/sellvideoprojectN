@@ -99,10 +99,13 @@ public  class Util {
 	            		v = (Video) tmpvlist.get(0);
 	            		vlist.add(v);
 	            	}else {
-	            		v = new Video();
-	            		v.setVid(fileNamesArray[i].getName().split("\\.")[0]);
-	            		v.setVname(fileNamesArray[i].getName());
-	            		vlist.add(v);
+	            		if(!fileNamesArray[i].getName().endsWith("part")) {
+	            			v = new Video();
+		            		v.setVid(fileNamesArray[i].getName().split("\\.")[0]);
+		            		v.setVname(fileNamesArray[i].getName());
+		            		vlist.add(v);
+	            		}
+	            		
 	            	}
 	            }
 	        }
