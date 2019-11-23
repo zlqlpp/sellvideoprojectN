@@ -340,7 +340,7 @@ class MusicImplements implements Runnable{
 		try {
 			//Logger.getLogger(MusicImplements.class).info("cd "+p.getProperty("videoPath")+";ls "+id+"\\*"); 
 			//Process pro = Runtime.getRuntime().exec("cd "+p.getProperty("videoPath")+";ls "+id+"*");
-			Process pro = Runtime.getRuntime().exec(new String[] {"/bin/sh", "-c","ls"+id+"*  " }) ;
+			Process pro = Runtime.getRuntime().exec(new String[] {"/bin/sh", "-c","cd "+p.getProperty("videoPath")+";ls "+id+"*" }) ;
 			pro.waitFor();
 			BufferedReader input = new BufferedReader(new InputStreamReader(pro.getInputStream()));
 			String line = "";
