@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -63,7 +64,7 @@ public class Sqlite3Util {
 	       sb.append("'"+v.getVname()+"',");
 	       sb.append("'"+v.getVlenght()+"',");
 	       sb.append(""+v.getVsize()+",");
-	       sb.append("'"+v.getCrt_date()+"',");
+	       sb.append("'"+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())+"',");
 	       sb.append( v.getVkind()+")" );
 	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
 	      int ret = statement.executeUpdate(sb.toString());
@@ -94,7 +95,7 @@ public class Sqlite3Util {
 	      Statement statement = connection.createStatement();
 	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-	      String sql = "select * from video where vid in ("+vids+")";
+	      String sql = "select * from video where vid in ("+vids+") order by crt_date desc"; 
 	      Logger.getLogger(Sqlite3Util.class).info("sql："+ sql); 
 	       ResultSet rs = statement.executeQuery(sql);
 	       List vlist = new ArrayList();
