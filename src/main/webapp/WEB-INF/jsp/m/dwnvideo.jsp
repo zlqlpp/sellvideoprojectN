@@ -35,15 +35,7 @@ function down(){
 
 
 <body>
-  	<h3>功能列表</h3>
- 
-  	 <a href="/m/mgotopage.do?page=dwnvideo"  class="btn btn-primary">下载视频</a>
-  	 <a href="/m/regetvideolist.do"   		  class="btn btn-success">视频列表管理</a>
-  	 <a href="/m/mgotopage.do?page=crtpasswd" class="btn btn-info">观看码管理</a>
-  	 <a href="/m/mgotopage.do?page=crtgg" 	  class="btn btn-warning">宣传页管理</a>
-  	 <a href="/m/mgotopage.do?page=clsvideo"  class="btn btn-danger">清空视频</a>
-  	 <br><br>
-  	 <hr/>
+<jsp:include page="/include/menu.jsp"></jsp:include>
 
 下载视频
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.pornhub.com" target="_blank">资源1</a>

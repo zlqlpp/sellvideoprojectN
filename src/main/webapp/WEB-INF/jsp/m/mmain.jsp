@@ -52,7 +52,7 @@ function go(v){
    			<td height="40px" >${v.vid } </td>
    			<td height="40px" >${v.vtitle }<c:if test="${! empty v.vlenght}">---(时长:${v.vlenght })</c:if> </td>
 		    <td height="40px" width="40px"  ><a href="/m/vidomod.do?id=${v.id }&vid=${v.vid }&vname=${v.vname }">編輯</a></td>
- 			<td height="40px" width="40px"  ><a href="#">刪除</a></td>
+ 			<td height="40px" width="40px"  ><a href="/m/vidodel.do?vname=${v.vname }">刪除</a></td>
    		</tr>
    		</c:forEach>
    </table>

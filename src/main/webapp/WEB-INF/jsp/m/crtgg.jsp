@@ -30,22 +30,12 @@ window.onload=function(){
 
 
 <body>
-  	<h3>功能列表</h3>
+<jsp:include page="/include/menu.jsp"></jsp:include>
  
-  	 <a href="/m/mgotopage.do?page=dwnvideo"  class="btn btn-primary">下载视频</a>
-  	 <a href="/m/regetvideolist.do"   		  class="btn btn-success">视频列表管理</a>
-  	 <a href="/m/mgotopage.do?page=crtpasswd" class="btn btn-info">观看码管理</a>
-  	 <a href="/m/mgotopage.do?page=crtgg" 	  class="btn btn-warning">宣传页管理</a>
-  	 <a href="/m/mgotopage.do?page=clsvideo"  class="btn btn-danger">清空视频</a>
-  	 <br><br>
-  	 <hr/>
-
-<hr>
- 
-  	 <a href="/m/crtgg.do">生成广告</a>
+  	 <a href="/m/crtgg.do" target="_blank">生成广告</a>
   	 <hr>
-  	 <a href="${t}" target="_blank">点击跳转到广告</a>
-   生成广告后直接复制浏览器中的地址即可，有效期5分钟
+<%--   	 <a href="${t}" target="_blank">点击跳转到广告</a>
+   生成广告后直接复制浏览器中的地址即可，有效期5分钟 --%>
    
 </body>
 </html>

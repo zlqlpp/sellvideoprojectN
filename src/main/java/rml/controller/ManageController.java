@@ -230,28 +230,35 @@ public class ManageController {
 		return "m/mmain";  
 	}
 	
-	@RequestMapping(value="/clean")
+	@RequestMapping(value="/videodel")
 	public String clean(HttpServletRequest request,HttpSession session) {
 		if(!Util.ifMLogin(session)){
 			return "m/mlogin";
 		}
 		
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String vname = request.getParameter("vidodel"); 
+		
 		Logger.getLogger(ManageController.class).info("清空视频列表");
+		
 		Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
 			prop = Util.getProp(session);
 		}
-		File file = new File(prop.getProperty("videoPath"));
+		File file = new File(prop.getProperty("videoPath")+vname);
 		
 		File[] files = file.listFiles();
 		for(int i=0;i<files.length;i++){
 			files[i].delete();
 		}
 		
-		Thread thread = new Thread(new CleanVideo(prop));
-		thread.start();
-		
-		session.setAttribute("videolist", new ArrayList());
+
+ session.setAttribute("videolist", Util.videolistformod(session));
 		return "m/mmain";  
 	}
 	
@@ -457,7 +464,7 @@ class MusicImplements implements Runnable{
 
  
 
-class CleanVideo implements Runnable{  
+/*class CleanVideo implements Runnable{  
 	private Properties p;
 	public CleanVideo(Properties p) {
 		this.p = p;
@@ -472,4 +479,4 @@ class CleanVideo implements Runnable{
          }
           
     }  
-} 
+} */
