@@ -46,6 +46,7 @@ function go(v){
   	 	表id(不用管這列):<input type="text" value="${video.id }" disabled="disabled" id="id" name="id"/>
   	 	視頻ID：<input type="text" value="${video.vid }" disabled="disabled" id="vid" name="vid"/>
   	 	視頻標題：<textarea   id="vname" name="vname">${video.vname }</textarea>
+  	 	<input type="submit" value="提交">
   	 </form>
   	 
  
