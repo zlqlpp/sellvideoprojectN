@@ -45,7 +45,7 @@ function go(v){
   	 <form action="/m/vidomodupdata.do" method="post">
   	 	表id(不用管這列):<input type="text" value="${video.id }"  id="id" name="id"/>
   	 	視頻ID：<input type="text" value="${video.vid }"  id="vid" name="vid"/>
-  	 	視頻name:<input type="text" value="${video.vname }"  id="vid" name="vid"/>
+  	 	視頻name:<input type="text" value="${video.vname }"  id="vname" name="vname"/>
   	 	視頻標題：<textarea   id="vtitle" name="vtitle">${video.vtitle }</textarea>
   	 	<input type="submit" value="提交">
   	 </form>
