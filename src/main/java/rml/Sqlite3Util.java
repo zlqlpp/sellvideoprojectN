@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.log4j.Logger;
+
 import rml.bean.Video;
 
 public class Sqlite3Util {
@@ -68,8 +70,9 @@ public class Sqlite3Util {
 	       sb.append(""+v.getVsize()+",");
 	       sb.append("'"+v.getCrt_date()+"',");
 	       sb.append( v.getVkind()+")" );
-	       
-	      statement.executeUpdate(sb.toString());
+	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
+	      int ret = statement.executeUpdate(sb.toString());
+	      Logger.getLogger(Sqlite3Util.class).info("sql-ret："+ ret); 
 	       
 	    }
 	    catch(Exception e) {
@@ -94,9 +97,9 @@ public class Sqlite3Util {
 	      Statement statement = connection.createStatement();
 	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
- 
-	      
-	       ResultSet rs = statement.executeQuery("select * from vieo where vid in ("+vids+")");
+	      String sql = "select * from video where vid in ("+vids+")";
+	      Logger.getLogger(Sqlite3Util.class).info("sql："+ sql); 
+	       ResultSet rs = statement.executeQuery(sql);
 	       List vlist = new ArrayList();
 	       Video v = null;
 	      while(rs.next()) {
@@ -111,6 +114,7 @@ public class Sqlite3Util {
 	    	  v.setVkind(rs.getString("vkind"));
 	         vlist.add(v);
 	      } 
+	      Logger.getLogger(Sqlite3Util.class).info("sql--select ret count："+ vlist.size()); 
 	      return vlist;
 	    } catch(Exception e) {
 	      System.err.println(e.getMessage());
