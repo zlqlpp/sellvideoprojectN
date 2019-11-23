@@ -306,21 +306,7 @@ class MusicImplements implements Runnable{
 		Logger.getLogger(MusicImplements.class).info("视频下载---视频名字："+ title);  
 		
 		
-        processList = new ArrayList<String>();
-		try {
-			Process p = Runtime.getRuntime().exec("ls "+id+"*");
-			p.waitFor();
-			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			String line = "";
-			while ((line = input.readLine()) != null) {
-				processList.add(line);
-			}
-			input.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		String fullname = processList.get(0).toString();
-		Logger.getLogger(MusicImplements.class).info("视频下载---下载后的文件名："+ fullname); 
+
 
 
         processList = new ArrayList<String>();
@@ -350,7 +336,23 @@ class MusicImplements implements Runnable{
         }
         Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...完成..." );
         
-         
+        processList = new ArrayList<String>();
+		try {
+			Process p = Runtime.getRuntime().exec("ls "+id+"*");
+			p.waitFor();
+			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line = "";
+			while ((line = input.readLine()) != null) {
+				processList.add(line);
+			}
+			input.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String fullname = processList.get(0).toString();
+		Logger.getLogger(MusicImplements.class).info("视频下载---下载后的文件名："+ fullname); 
+		
+		
         try {
         	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(title)s.%(ext)s "+durl);
         	Process pro = Runtime.getRuntime().exec("youtube-dl --write-thumbnail --skip-download -o "+p.getProperty("imgPath")+"%(id)s.%(ext)s "+durl);
