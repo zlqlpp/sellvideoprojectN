@@ -338,7 +338,7 @@ class MusicImplements implements Runnable{
         
         processList = new ArrayList<String>();
 		try {
-			Process pro = Runtime.getRuntime().exec("ls "+p.getProperty("videoPath")+id+"*");
+			Process pro = Runtime.getRuntime().exec("cd "+p.getProperty("videoPath")+";ls "+id+"*");
 			pro.waitFor();
 			BufferedReader input = new BufferedReader(new InputStreamReader(pro.getInputStream()));
 			String line = "";
