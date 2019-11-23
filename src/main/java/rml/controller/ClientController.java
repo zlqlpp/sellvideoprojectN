@@ -56,7 +56,7 @@ public class ClientController {
 	
 	@RequestMapping(value="/openvideo")
 	public String openvideo(Model model,HttpServletRequest request,HttpSession session) {
-		
+		Logger.getLogger(ClientController.class).info("openvideo---page..." );
 		if(!Util.ifLogin(session)){ //---------------------校验登录
 			return "index";
 		}

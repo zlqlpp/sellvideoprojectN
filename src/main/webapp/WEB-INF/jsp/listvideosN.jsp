@@ -22,7 +22,7 @@ function go(v){
 }
 
 window.onload=function(){
-	document.getElementById('content').style='block';
+	//document.getElementById('content').style='block';
 		var ua = navigator.userAgent.toLowerCase();
 		if(ua.match(/MicroMessenger/i)=="micromessenger") {
 			 //alert('请用手机浏览器打开链接');
@@ -36,7 +36,7 @@ window.onload=function(){
 </script>
 </head>
 <body>
-<form action="/c/openvideo.do" method="get"  id="f">
+<form action="/c/openvideo.do" method="post"  id="f">
   	 	<input type="hidden" id="vid" name="vid" />
   	 	<input type="hidden" id="wb" name="wb" />
 </form>
