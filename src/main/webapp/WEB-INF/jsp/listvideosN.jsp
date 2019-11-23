@@ -80,7 +80,7 @@ window.onload=function(){
 										<div class="list_info">
 											<div >
 												<font color="Red"><p style="font-size: 11px;"> 已有2053人付款<b>5</b>元观看 </p></font>
-												<div onclick="go('${v.vid}')">${v.vtitle }---(时长:${v.vlenght })</div>
+												<div onclick="go('${v.vid}')">${v.vtitle }<c:if test="${! empty v.vlenght}">---(时长:${v.vlenght })</c:if></div>
 											</div>
 										</div>
 								</li>
