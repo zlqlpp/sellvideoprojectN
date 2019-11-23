@@ -10,6 +10,7 @@ public class Sqlite3Util {
   public static void testsqlite() {
     Connection connection = null;
     try {
+    	 Class.forName("org.sqlite.JDBC");
       connection = DriverManager.getConnection("jdbc:sqlite:/root/youtubedl/video/video.db");
       Statement statement = connection.createStatement();
       statement.setQueryTimeout(30);  // set timeout to 30 sec.
@@ -25,7 +26,7 @@ public class Sqlite3Util {
         System.out.println("id = " + rs.getInt("id"));
       }
     }
-    catch(SQLException e) {
+    catch(Exception e) {
       System.err.println(e.getMessage());
     }
     finally {
