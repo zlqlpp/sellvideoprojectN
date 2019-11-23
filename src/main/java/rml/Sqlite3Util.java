@@ -135,7 +135,7 @@ public class Sqlite3Util {
 	      
 	      //statement.executeUpdate("create table user (id integer, seecode string,count integer,crt_date string)");
 	      
-	      int id = new Long(new Date().getTime()).intValue();
+	      //int id = new Long(new Date().getTime()).intValue();
 	       StringBuffer sb = new StringBuffer("insert into user values("+UUID.randomUUID()+", ");
 	       sb.append("'"+u.getCode()+"',");
 	       sb.append(u.getCount()+",");
@@ -211,8 +211,8 @@ public class Sqlite3Util {
 	      
 	      //statement.executeUpdate("create table user (id integer, seecode string,count integer,crt_date string)");
 	      
-	      int id = new Long(new Date().getTime()).intValue();
-	       StringBuffer sb = new StringBuffer("update user set count="+u.getCount()+" where u.id="+u.getId()); 
+	      //int id = new Long(new Date().getTime()).intValue();
+	       StringBuffer sb = new StringBuffer("update user set count="+u.getCount()+" where id="+u.getId()); 
  
 	       
 	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
