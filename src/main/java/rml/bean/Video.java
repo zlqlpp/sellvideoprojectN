@@ -3,13 +3,7 @@ package rml.bean;
 
 public class Video {
 	private String id;
- 
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	private String vid;
 	private String vtitle;
 	private String vname;
@@ -17,6 +11,25 @@ public class Video {
 	private String vsize;
 	private String crt_date;
 	private String vkind;
+	
+	 
+		public Video() {
+		super();
+		this.id = "";
+		this.vid = "";
+		this.vtitle = "";
+		this.vname = "";
+		this.vlenght = "";
+		this.vsize = "";
+		this.crt_date = "";
+		this.vkind = "";
+	}
+		public String getId() {
+			return id;
+		}
+		public void setId(String id) {
+			this.id = id;
+		}
 	public String getVkind() {
 		return vkind;
 	}
