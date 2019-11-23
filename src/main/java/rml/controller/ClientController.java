@@ -51,7 +51,7 @@ public class ClientController {
 		session.setAttribute("user", ulist.get(0));
 		
 		model.addAttribute("videolist",videolist);
-		return "listvideos";
+		return "listvideosN";
 	}
 	
 	@RequestMapping(value="/openvideo")
