@@ -1,26 +1,17 @@
 package rml.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.alibaba.fastjson.JSON;
-
-import redis.clients.jedis.Jedis;
 import rml.Sqlite3Util;
-//import rml.RedisUtil;
 import rml.Util;
 import rml.bean.User;
 import rml.bean.Video;
@@ -95,7 +86,9 @@ public class ClientController {
 			u.setCount(u.getCount()-1);
 		}
 		
-		 Sqlite3Util.updateuser(u);//---------------------更新用户次数
+		if(Sqlite3Util.updateuser(u)==0){//---------------------更新用户次数
+			return "index";
+		}
 		
 		List vlist = Sqlite3Util.selectfromvide("'"+vid+"'"); //---------------------找到视频
 		Video v = (Video) vlist.get(0);

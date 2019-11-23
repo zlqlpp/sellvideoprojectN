@@ -25,10 +25,10 @@ public class Sqlite3Util {
       statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
       statement.executeUpdate("drop table if exists user");
-      statement.executeUpdate("create table user (id integer, seecode string,count double,crt_date string)");
+      statement.executeUpdate("create table user (id string, seecode string,count double,crt_date string)");
 
       statement.executeUpdate("drop table if exists video");
-      statement.executeUpdate("create table video (id integer, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date string,vkind integer)");
+      statement.executeUpdate("create table video (id string, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date string,vkind integer)");
 
     }
     catch(Exception e) {
@@ -56,7 +56,7 @@ public class Sqlite3Util {
 	      
 	      //statement.executeUpdate("create table video (id integer, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date string,vkind integer)");
 	      int id = new Long(new Date().getTime()).intValue();
-	       StringBuffer sb = new StringBuffer("insert into video values("+id+", ");
+	       StringBuffer sb = new StringBuffer("insert into video values("+UUID.randomUUID()+", ");
 	       sb.append("'"+v.getVid()+"',");
 	       sb.append("'"+v.getVtitle()+"',");
 	       sb.append("'"+v.getVname()+"',");
@@ -99,7 +99,7 @@ public class Sqlite3Util {
 	       Video v = null;
 	      while(rs.next()) {
 	    	  v = new Video();
-	    	  v.setId(rs.getInt("id"));
+	    	  v.setId(rs.getString("id"));
 	    	  v.setVid(rs.getString("vid"));
 	    	  v.setVtitle(rs.getString("vtitle"));
 	    	  v.setVname(rs.getString("vname"));
@@ -136,7 +136,7 @@ public class Sqlite3Util {
 	      //statement.executeUpdate("create table user (id integer, seecode string,count integer,crt_date string)");
 	      
 	      int id = new Long(new Date().getTime()).intValue();
-	       StringBuffer sb = new StringBuffer("insert into user values("+id+", ");
+	       StringBuffer sb = new StringBuffer("insert into user values("+UUID.randomUUID()+", ");
 	       sb.append("'"+u.getCode()+"',");
 	       sb.append(u.getCount()+",");
 	       sb.append("'"+u.getCrtDate()+"')");
@@ -179,7 +179,7 @@ public class Sqlite3Util {
 	       User u = null;
 	      while(rs.next()) {
 	    	  u = new User();
-	    	  u.setId(rs.getInt("id"));
+	    	  u.setId(rs.getString("id"));
 	    	  u.setCode(rs.getString("seecode"));
 	    	  u.setCount(rs.getDouble("count"));
 	    	  u.setCrtDate(rs.getString("crt_date"));
@@ -201,7 +201,7 @@ public class Sqlite3Util {
 	    }
 	    return null;
 	  }
-  public static void updateuser(User u) {   //----------------------创建观看码实体
+  public static int updateuser(User u) {   //----------------------创建观看码实体
 	    Connection connection = null;
 	    try {
 	    	 Class.forName("org.sqlite.JDBC");
@@ -219,6 +219,7 @@ public class Sqlite3Util {
 	      int ret = statement.executeUpdate(sb.toString());
 	      
 	      Logger.getLogger(Sqlite3Util.class).info("sql-ret："+ ret); 
+	      return ret;
 	       
 	    }
 	    catch(Exception e) {
@@ -233,5 +234,6 @@ public class Sqlite3Util {
 	    	  e.printStackTrace();
 	      }
 	    }
+	    return 0;
 	  }
 }
