@@ -240,7 +240,7 @@ public class Sqlite3Util {
 	      Statement statement = connection.createStatement();
 	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
 	      
-	       StringBuffer sb = new StringBuffer("update video set vname='"+v.getVname()+"' where id='"+v.getId()+"'"); 
+	       StringBuffer sb = new StringBuffer("update video set vtitle='"+v.getVtitle()+"' where id='"+v.getId()+"'"); 
 
 	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
 	      int ret = statement.executeUpdate(sb.toString());
