@@ -153,8 +153,9 @@ public class ManageController {
 		}
 		
 		Logger.getLogger(ManageController.class).info("刷新视频列表");
-		
-		session.setAttribute("videolist", Util.videolistformod(session));
+		List vlist = Util.videolistformod(session);
+		Collections.reverse(vlist);
+		session.setAttribute("videolist", vlist);
 		
 		return "m/mmain";  
 	}
