@@ -32,7 +32,7 @@ function go(v){
 </head>
 <body>
   	
- 	<jsp:include page="/m/menu.do">
+ 	<jsp:include page="/m/menu.jsp">
  	
 
   	 
