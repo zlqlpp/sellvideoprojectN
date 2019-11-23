@@ -11,7 +11,7 @@ public class Sqlite3Util {
     Connection connection = null;
     try {
     	 Class.forName("org.sqlite.JDBC");
-      connection = DriverManager.getConnection("jdbc:sqlite:/root/youtubedl/video/video.db");
+      connection = DriverManager.getConnection("jdbc:sqlite:/root/youtubedl/video.db");
       Statement statement = connection.createStatement();
       statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
