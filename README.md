@@ -35,10 +35,16 @@ rm -rf /var/lib/tomcat/webapps/*;                                               
 /root/apache-tomcat-7.0.96/bin/startup.sh; \
 vlog; '
 
+alias gon='cd /root/git_zlq/sellvideoprojectN;                                                         \
+git pull;                                                                                            \
+mvn clean package;                                                                                   \
+ cp  -R /root/git_zlq/sellvideoprojectN/target/sellvideoprojectN /root/apache-tomcat-7.0.96/webapps;'
+
 alias cdapp='cd /root/apache-tomcat-7.0.96/webapps'
 alias cdlog='cd /root/apache-tomcat-7.0.96/logs'
 alias vlog="tail -f /root/apache-tomcat-7.0.96/logs/catalina.out"
 alias cdvideo=" cd ~/youtubedl/;ll"
+alias cdgit=
 
 
 #######.bash_profile
