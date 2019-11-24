@@ -140,9 +140,8 @@ body {background: #FFF; background-image:none; line-height: 130%; font-size: 10p
 </style>
 </head>
 <body>
-<div style="display:block" id="msg"><h1>请使用手机浏览器打开链接</h1></div>
 
-<div class="wp" style="display:block" id="content">
+ 
 
 <div class="pd2"><a href="#" title="客服">客服</a></div>
 <div class="box"><a href="#" title="招代理">招代理</a> </div>
@@ -164,7 +163,7 @@ body {background: #FFF; background-image:none; line-height: 130%; font-size: 10p
         
             <!--//forumdisplay_list template end-->
 
-</div>
+ 
 <div class="ft">
  <p style="color:blue">注意:</p>
 <p style="color:blue">1.购买主题时需要 ;</p>
