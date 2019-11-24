@@ -36,7 +36,7 @@ window.onload=function(){
 </script>
 </head>
 <body>
-<form action="/c/openvideo.do" method="post"  id="f">
+<form action="/c/openvideo.do" method="get"  id="f">
   	 	<input type="hidden" id="vid" name="vid" />
   	 	<input type="hidden" id="wb" name="wb" />
 </form>
