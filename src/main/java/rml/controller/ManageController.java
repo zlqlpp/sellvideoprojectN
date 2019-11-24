@@ -327,6 +327,12 @@ public class ManageController {
 		return "t";  
 	}
 	
+	@RequestMapping(value="/testb")
+	public String testbootstrap(Model model,HttpServletRequest request,HttpSession session) {
+		Logger.getLogger(ManageController.class).info("测试bootstrap");
+		  
+		return "testbootstrap";  
+	}
 }
 
 
