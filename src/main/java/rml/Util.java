@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -45,7 +47,7 @@ public  class Util {
 			return false;
 		}
 		
-		//
+		//从目录中读文件名，，然后去库里 in, 可以用sql排序。
 	    public static List getVideoListFromFileAndDB(HttpSession session){
 	    	Logger.getLogger(Util.class).info("先从目录中读出视频，库里有则显示，库里没有不显示" );
 	    	Properties prop = (Properties) session.getAttribute("prop");
@@ -75,6 +77,7 @@ public  class Util {
 	        
 	    }
  
+	    //从目录中读视频，，然后去库里找，需要对读目录文件排序
 	    public static List videolistformod(HttpSession session){
 	    	Logger.getLogger(Util.class).info("先从目录中读出视频，库里有则显示中文名。没有只显示ID" );
 	    	Properties prop = (Properties) session.getAttribute("prop");
@@ -87,7 +90,23 @@ public  class Util {
 			
 			File file = new File(prop.getProperty("videoPath"));
 	        File[] fileNamesArray = file.listFiles();
-	        
+	        Arrays.sort(fileNamesArray, new Comparator<File>() {
+	            public int compare(File f1, File f2) {
+	                long diff = f1.lastModified() - f2.lastModified();
+	                if (diff > 0)
+	                    return 1;
+	                else if (diff == 0)
+	                    return 0;
+	                else
+	                    return -1;//如果 if 中修改为 返回-1 同时此处修改为返回 1  排序就会是递减
+	            }
+
+	            public boolean equals(Object obj) {
+	                return true;
+	            }
+
+	        });
+ 
 	        Video v = null;
 	        if(null != fileNamesArray){
 	        for (int i = 0; i < fileNamesArray.length; i++) {
