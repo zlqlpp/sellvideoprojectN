@@ -57,7 +57,7 @@ public class ManageController {
 	@RequestMapping(value="/mlogin")
 	public String listUser(HttpServletRequest request) {
 		
-		return "m/mlogin";
+		return "manage/login";
 	}
 	
 	@RequestMapping(value="/mmain")
