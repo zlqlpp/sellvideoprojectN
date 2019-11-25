@@ -26,10 +26,10 @@ public class Sqlite3Util {
       statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
       statement.executeUpdate("drop table if exists user");
-      statement.executeUpdate("create table user (id string, seecode string,count double,crt_date integer)");
+      statement.executeUpdate("create table user (id string, seecode string,count double,crt_date long)");
 
       statement.executeUpdate("drop table if exists video");
-      statement.executeUpdate("create table video (id string, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date integer,vkind integer)");
+      statement.executeUpdate("create table video (id string, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date long,vkind integer)");
 
     }
     catch(Exception e) {
@@ -108,7 +108,7 @@ public class Sqlite3Util {
 	    	  v.setVname(rs.getString("vname"));
 	    	  v.setVlenght(rs.getString("vlenght"));
 	    	  v.setVsize(rs.getInt("vsize")+"");
-	    	  v.setCrt_date(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(rs.getInt("crt_date"))));
+	    	  v.setCrt_date(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(rs.getLong("crt_date"))));
 	    	  v.setVkind(rs.getString("vkind"));
 	         vlist.add(v);
 	      } 
@@ -186,7 +186,7 @@ public class Sqlite3Util {
 	    	  u.setId(rs.getString("id"));
 	    	  u.setCode(rs.getString("seecode"));
 	    	  u.setCount(rs.getDouble("count"));
-	    	  u.setCrtDate(rs.getInt("crt_date")+"");
+	    	  u.setCrtDate(rs.getLong("crt_date")+"");
 	    	   
 	         ulist.add(u);
 	      } 
