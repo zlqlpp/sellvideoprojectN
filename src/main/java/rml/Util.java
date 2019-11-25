@@ -90,26 +90,10 @@ public  class Util {
 			
 			File file = new File(prop.getProperty("videoPath"));
 	        File[] fileNamesArray = file.listFiles();
-	        Arrays.sort(fileNamesArray, new Comparator<File>() {
-	            public int compare(File f1, File f2) {
-	                long diff = f1.lastModified() - f2.lastModified();
-	                if (diff > 0)
-	                    return 0;
-	                else if (diff == 0)
-	                    return 1;
-	                else
-	                    return -1;//如果 if 中修改为 返回-1 同时此处修改为返回 1  排序就会是递减
-	            }
-
-	            public boolean equals(Object obj) {
-	                return true;
-	            }
-
-	        });
  
 	        Video v = null;
 	        if(null != fileNamesArray){
-	        for (int i = 0; i < fileNamesArray.length; i++) {
+	        for (int i = fileNamesArray.length-1; i >=0 ; i--) {
 	        	 
 	        	tmpvlist = null;  
 	            if (fileNamesArray[i].isFile()) {
