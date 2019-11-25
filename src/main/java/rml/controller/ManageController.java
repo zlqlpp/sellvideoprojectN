@@ -52,7 +52,7 @@ public class ManageController {
 	@RequestMapping(value="/b")
 	public String menu(HttpServletRequest request) {
 		
-		return "manage/main";
+		return "manage/main_down";
 	}
 	@RequestMapping(value="/mlogin")
 	public String listUser(HttpServletRequest request) {
