@@ -29,7 +29,7 @@ public class Sqlite3Util {
       statement.executeUpdate("create table user (id string, seecode string,count double,crt_date string)");
 
       statement.executeUpdate("drop table if exists video");
-      statement.executeUpdate("create table video (id string, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date string,vkind integer)");
+      statement.executeUpdate("create table video (id string, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date integer,vkind integer)");
 
     }
     catch(Exception e) {
@@ -64,7 +64,7 @@ public class Sqlite3Util {
 	       sb.append("'"+v.getVname()+"',");
 	       sb.append("'"+v.getVlenght()+"',");
 	       sb.append(""+v.getVsize()+",");
-	       sb.append("'"+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())+"',");
+	       sb.append(""+new Date().getTime()+",");
 	       sb.append( v.getVkind()+")" );
 	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
 	      int ret = statement.executeUpdate(sb.toString());
@@ -108,7 +108,7 @@ public class Sqlite3Util {
 	    	  v.setVname(rs.getString("vname"));
 	    	  v.setVlenght(rs.getString("vlenght"));
 	    	  v.setVsize(rs.getInt("vsize")+"");
-	    	  v.setCrt_date(rs.getString("crt_date"));
+	    	  v.setCrt_date(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(rs.getString("crt_date"))));
 	    	  v.setVkind(rs.getString("vkind"));
 	         vlist.add(v);
 	      } 
@@ -142,7 +142,7 @@ public class Sqlite3Util {
 	       StringBuffer sb = new StringBuffer("insert into user values('"+UUID.randomUUID()+"', ");
 	       sb.append("'"+u.getCode()+"',");
 	       sb.append(u.getCount()+",");
-	       sb.append("'"+u.getCrtDate()+"')");
+	       sb.append(""+u.getCrtDate()+")");
 	       
 	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
 	      int ret = statement.executeUpdate(sb.toString());

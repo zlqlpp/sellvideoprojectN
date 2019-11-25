@@ -283,7 +283,7 @@ public class ManageController {
 		User user = new User();
 		user.setCode(code.toString());
 		user.setCount(Double.parseDouble(count));
-		user.setCrtDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date));
+		user.setCrtDate(code.toString());
 		
 		int ret = Sqlite3Util.insertuser(user);
 		
