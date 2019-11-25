@@ -38,7 +38,7 @@
 
 				<ul class="nav nav-list">
 					<li class="">
-						<a href="index.html">
+						<a href="#">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> 下载视频 </span>
 						</a>
@@ -85,7 +85,7 @@
 					</li>
 
 					<li class="">
-						<a href="widgets.html">
+						<a href="#">
 							<i class="menu-icon fa fa-list-alt"></i>
 							<span class="menu-text"> 敬请期待 </span>
 						</a>
@@ -94,7 +94,7 @@
 					</li>
 
 					<li class="">
-						<a href="calendar.html">
+						<a href="#">
 							<i class="menu-icon fa fa-calendar"></i>
 
 							<span class="menu-text">
@@ -110,7 +110,7 @@
 					</li>
 
 					<li class="">
-						<a href="gallery.html">
+						<a href="#">
 							<i class="menu-icon fa fa-picture-o"></i>
 							<span class="menu-text"> 敬请期待 </span>
 						</a>
