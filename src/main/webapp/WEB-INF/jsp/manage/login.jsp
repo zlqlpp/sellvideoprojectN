@@ -17,7 +17,7 @@
 									<span class="red"></span>
 									<span class="white" id="id-text2">乌托邦</span>
 								</h1>
-								<h4 class="blue" id="id-company-text">&copy; sun</h4>
+								<h4 class="blue" id="id-company-text">&copy; sum</h4>
 							</div>
 
 							<div class="space-6"></div>
@@ -28,23 +28,23 @@
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
 												<i class="ace-icon fa fa-coffee green"></i>
-												Please Enter Your Information
+												请输入你的信息
 											</h4>
 
 											<div class="space-6"></div>
 
-											<form>
+											<form action="/m/mmain.do" method="post" id="f">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" />
+															<input type="text" name="uname" class="form-control" placeholder="Username" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" />
+															<input type="password" value="passwd" class="form-control" placeholder="Password" />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
@@ -53,13 +53,13 @@
 
 													<div class="clearfix">
 														<label class="inline">
-															<!-- <input type="checkbox" class="ace" />
-															<span class="lbl"> Remember Me</span> -->
+															<input type="checkbox" class="ace" />
+														<!-- 	<span class="lbl"> Remember Me</span> -->
 														</label>
 
 														<button type="button" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
-															<span class="bigger-110">Login</span>
+															<span class="bigger-110" onclick="$('#f').submit();">Login</span>
 														</button>
 													</div>
 
@@ -67,7 +67,7 @@
 												</fieldset>
 											</form>
 
-											<!-- <div class="social-or-login center">
+<!-- 											<div class="social-or-login center">
 												<span class="bigger-110">Or Login Using</span>
 											</div>
 
@@ -88,21 +88,21 @@
 											</div> -->
 										</div><!-- /.widget-main -->
 
-										<div class="toolbar clearfix">
+<!-- 										<div class="toolbar clearfix">
 											<div>
 												<a href="#" data-target="#forgot-box" class="forgot-password-link">
 													<i class="ace-icon fa fa-arrow-left"></i>
-													 
+													I forgot my password
 												</a>
 											</div>
 
 											<div>
 												<a href="#" data-target="#signup-box" class="user-signup-link">
-													 
+													I want to register
 													<i class="ace-icon fa fa-arrow-right"></i>
 												</a>
 											</div>
-										</div>
+										</div> -->
 									</div><!-- /.widget-body -->
 								</div><!-- /.login-box -->
 

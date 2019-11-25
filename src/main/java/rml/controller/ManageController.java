@@ -63,11 +63,11 @@ public class ManageController {
 	@RequestMapping(value="/mmain")
 	public String mmain(Model model,HttpServletRequest request,HttpSession session) {
 		
-		String code = request.getParameter("passwd");
+		String uname = request.getParameter("uname");
 		if(Util.ifMLogin(session)){
 			return "m/mmain";
-		}else if(null!=code&&"1234qwer".equals(code)){
-			session.setAttribute("muser", code);
+		}else if(null!=uname&&"1234qwer".equals(uname)){
+			session.setAttribute("muser", uname);
 			return "m/mmain";
 		}else{
 			return "m/mlogin";
