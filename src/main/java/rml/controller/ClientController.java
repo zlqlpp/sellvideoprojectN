@@ -43,7 +43,7 @@ public class ClientController {
 		
 
 		List videolist = Util.getVideoListFromFileAndDB(session);
-		Collections.reverse(videolist);
+		//Collections.reverse(videolist);
 		Logger.getLogger(ClientController.class).info("登录--读视频列表， 从文件读,然后找库，完成：" );
 		
 		List ulist = Sqlite3Util.selectfromuser(seecode);
