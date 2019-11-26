@@ -20,15 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
 
-<script type="text/javascript">
-function go(v){
-	document.getElementById('video').value=v;
-	var form = document.getElementById('f');
-	 
-	form.submit();
-	 
-}
-</script>
+
 </head>
 <body>
 <jsp:include page="/include/menu.jsp"></jsp:include>

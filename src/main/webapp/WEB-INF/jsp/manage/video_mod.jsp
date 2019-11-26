@@ -4,6 +4,15 @@
 <html>
 <head>
 		<jsp:include page="/include/bootstrap.jsp"></jsp:include>
+		<script type="text/javascript">
+function go(v){
+	document.getElementById('video').value=v;
+	var form = document.getElementById('f');
+	 
+	form.submit();
+	 
+}
+</script>
 	</head>
 
 	<body class="no-skin">
@@ -28,7 +37,7 @@
 								<a href="#">Forms</a>
 							</li>
 							<li class="active">Form Elements</li>
-						</ul><!-- /.breadcrumb -->
+						</ul>
 
 						<div class="nav-search" id="nav-search">
 							<form class="form-search">
@@ -41,72 +50,6 @@
 					</div>
 
 					<div class="page-content">
-						<div class="ace-settings-container" id="ace-settings-container">
-							<div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
-								<i class="ace-icon fa fa-cog bigger-130"></i>
-							</div>
-
-							<div class="ace-settings-box clearfix" id="ace-settings-box">
-								<div class="pull-left width-50">
-									<div class="ace-settings-item">
-										<div class="pull-left">
-											<select id="skin-colorpicker" class="hide">
-												<option data-skin="no-skin" value="#438EB9">#438EB9</option>
-												<option data-skin="skin-1" value="#222A2D">#222A2D</option>
-												<option data-skin="skin-2" value="#C6487E">#C6487E</option>
-												<option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
-											</select>
-										</div>
-										<span>&nbsp; Choose Skin</span>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-navbar" autocomplete="off" />
-										<label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-sidebar" autocomplete="off" />
-										<label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-breadcrumbs" autocomplete="off" />
-										<label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" autocomplete="off" />
-										<label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-add-container" autocomplete="off" />
-										<label class="lbl" for="ace-settings-add-container">
-											Inside
-											<b>.container</b>
-										</label>
-									</div>
-								</div><!-- /.pull-left -->
-
-								<div class="pull-left width-50">
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" autocomplete="off" />
-										<label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" autocomplete="off" />
-										<label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" autocomplete="off" />
-										<label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
-									</div>
-								</div><!-- /.pull-left -->
-							</div><!-- /.ace-settings-box -->
-						</div><!-- /.ace-settings-container -->
 
 						<div class="page-header">
 							<h1>
@@ -121,20 +64,33 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-								<form class="form-horizontal" role="form">
+								<form class="form-horizontal"  action="/m/vidomodupdata.do" method="post">
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Text Field </label>
-
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> t_id </label>
 										<div class="col-sm-9">
-											<input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" />
+											<input type="text" value="${video.id }"    class="col-xs-10 col-sm-5" />
+											<input type="hidden" value="${video.id }"  id="id" name="id"  class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 视频ID </label>
+										<div class="col-sm-9">
+											<input type="text" value="${video.vid }"   class="col-xs-10 col-sm-5" />
+											<input type="hidden" value="${video.vid }"  id="vid" name="vid" class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 视频name </label>
+										<div class="col-sm-9">
+											<input type="text" value="${video.vname }"  class="col-xs-10 col-sm-5" />
+											<input type="hidden" value="${video.vname }"  id="vname" name="vname"  class="col-xs-10 col-sm-5" />
 										</div>
 									</div>
 
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Full Length </label>
-
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 视频标题 </label>
 										<div class="col-sm-9">
-											<input type="text" id="form-field-1-1" placeholder="Text Field" class="form-control" />
+											<input type="text" id="vtitle" name="vtitle" value="${video.vtitle }"  class="form-control" />
 										</div>
 									</div>
 
@@ -174,40 +130,8 @@
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 			</a>
 
-		<!-- basic scripts -->
-
-		<!--[if !IE]> -->
-		<script src="assets/js/jquery-2.1.4.min.js"></script>
-
-		<!-- <![endif]-->
-
-		<!--[if IE]>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
 
 
-		<!--[if lte IE 8]>
-		  <script src="assets/js/excanvas.min.js"></script>
-		<![endif]-->
-		<script src="assets/js/jquery-ui.custom.min.js"></script>
-		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-		<script src="assets/js/chosen.jquery.min.js"></script>
-		<script src="assets/js/spinbox.min.js"></script>
-		<script src="assets/js/bootstrap-datepicker.min.js"></script>
-		<script src="assets/js/bootstrap-timepicker.min.js"></script>
-		<script src="assets/js/moment.min.js"></script>
-		<script src="assets/js/daterangepicker.min.js"></script>
-		<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
-		<script src="assets/js/bootstrap-colorpicker.min.js"></script>
-		<script src="assets/js/jquery.knob.min.js"></script>
-		<script src="assets/js/autosize.min.js"></script>
-		<script src="assets/js/jquery.inputlimiter.min.js"></script>
-		<script src="assets/js/jquery.maskedinput.min.js"></script>
-		<script src="assets/js/bootstrap-tag.min.js"></script>
-
-		<!-- ace scripts -->
-		<script src="assets/js/ace-elements.min.js"></script>
-		<script src="assets/js/ace.min.js"></script>
 
 	</body>
 </html>
