@@ -254,21 +254,19 @@ public class ManageController {
 		Logger.getLogger(ManageController.class).info("视频路径："+prop.getProperty("videoPath")+vname);
 		File video = new File(prop.getProperty("videoPath")+vname);
 		
-		File[] files = video.listFiles();
-		for(int i=0;i<files.length;i++){
-			files[i].delete();
+		if(video.isFile()){
+			video.delete();
 		}
 		
 		File img = new File(prop.getProperty("imgPath")+vname);
 		
-		files = img.listFiles();
-		for(int i=0;i<files.length;i++){
-			files[i].delete();
+		if(img.isFile()){
+			img.delete();
 		}
 		
-
- session.setAttribute("videolist", Util.videolistformod(session));
- return "manage/video_manage";  
+	 session.setAttribute("videolist", Util.videolistformod(session));
+	 return "manage/video_manage";  
+	 
 	}
 	
 	@RequestMapping(value="/crtpasswd")
