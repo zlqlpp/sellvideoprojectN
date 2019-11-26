@@ -75,6 +75,18 @@ public class ManageController {
 		}
 	}
 	
+	@RequestMapping(value="/regetvideolist")
+	public String videolistfromod(HttpServletRequest request,HttpSession session) {
+		if(!Util.ifMLogin(session)){
+			return "manage/login";
+		}
+		
+		Logger.getLogger(ManageController.class).info("刷新视频列表");
+		session.setAttribute("videolist", Util.videolistformod(session));
+		
+		return "manage/video_main";  
+	}
+	
 	@RequestMapping(value="/mgotopage")
 	public String mgotopage(Model model,HttpServletRequest request,HttpSession session) {
 		if(!Util.ifMLogin(session)){
@@ -85,9 +97,7 @@ public class ManageController {
 		
 		if("dwnvideo".equals(page)){
 			return "m/dwnvideo";
-		}/*else if("crtpasswd".equals(page)){
-			return "m/crtpasswd";
-		}*/else if("crtgg".equals(page)){
+		}else if("crtgg".equals(page)){
 			return "m/crtgg";
 		} else if("clsvideo".equals(page)){
 			return "m/clsvideo";
@@ -147,17 +157,7 @@ public class ManageController {
 		return retMap;
 	}
 	
-	@RequestMapping(value="/regetvideolist")
-	public String videolistfromod(HttpServletRequest request,HttpSession session) {
-		if(!Util.ifMLogin(session)){
-			return "m/mlogin";
-		}
-		
-		Logger.getLogger(ManageController.class).info("刷新视频列表");
-		session.setAttribute("videolist", Util.videolistformod(session));
-		
-		return "m/mmain";  
-	}
+
 	
 	@RequestMapping(value="/vidomod")
 	public String vidomod(Model model,HttpServletRequest request,HttpSession session) {

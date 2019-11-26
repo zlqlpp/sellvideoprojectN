@@ -47,7 +47,7 @@
 					</li>
 
 					<li class="">
-						<a href="/m/regetvideolist.do" class="dropdown-toggle">
+						<a href="/m/regetvideolist.do" >
 							<i class="menu-icon fa fa-desktop"></i>
 							<span class="menu-text" >
 								视频管理
