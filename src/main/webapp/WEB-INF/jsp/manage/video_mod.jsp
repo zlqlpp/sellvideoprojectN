@@ -68,21 +68,21 @@ function go(v){
 									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> t_id </label>
 										<div class="col-sm-9">
-											<input type="text" value="${video.id }"    class="col-xs-10 col-sm-5" />
+											<input type="text" value="${video.id }"  disable="disable"  class="col-xs-10 col-sm-5" />
 											<input type="hidden" value="${video.id }"  id="id" name="id"  class="col-xs-10 col-sm-5" />
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 视频ID </label>
 										<div class="col-sm-9">
-											<input type="text" value="${video.vid }"   class="col-xs-10 col-sm-5" />
+											<input type="text" value="${video.vid }"  disable="disable" class="col-xs-10 col-sm-5" />
 											<input type="hidden" value="${video.vid }"  id="vid" name="vid" class="col-xs-10 col-sm-5" />
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 视频name </label>
 										<div class="col-sm-9">
-											<input type="text" value="${video.vname }"  class="col-xs-10 col-sm-5" />
+											<input type="text" value="${video.vname }" disable="disable" class="col-xs-10 col-sm-5" />
 											<input type="hidden" value="${video.vname }"  id="vname" name="vname"  class="col-xs-10 col-sm-5" />
 										</div>
 									</div>
@@ -97,7 +97,7 @@ function go(v){
 
 									<div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
-											<button class="btn btn-info" type="button">
+											<button class="btn btn-info" type="submit">
 												<i class="ace-icon fa fa-check bigger-110"></i>
 												Submit
 											</button>
