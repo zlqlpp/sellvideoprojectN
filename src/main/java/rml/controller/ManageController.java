@@ -62,7 +62,7 @@ public class ManageController {
 	}
 	
 	@RequestMapping(value="/mmain")
-	public String mmain(Model model,HttpServletRequest request,HttpSession session) {
+	public String videoManage(Model model,HttpServletRequest request,HttpSession session) {
 		
 		String uname = request.getParameter("uname");
 		if(Util.ifMLogin(session)){
@@ -103,7 +103,7 @@ public class ManageController {
 			return "m/clsvideo";
 		} 
 		
-		return "m/mmain";
+		 return "manage/video_manage";  
 	}
 	
 	@RequestMapping(value="/crtgg")
@@ -183,7 +183,7 @@ public class ManageController {
 		 
 		Logger.getLogger(ManageController.class).info("修改視頻");
 		
-		return "m/modvideo";  
+		return "m/video_mod";  
 	}
 	
 	@RequestMapping(value="/vidomodupdata")
@@ -227,7 +227,7 @@ public class ManageController {
 		
 		session.setAttribute("videolist", Util.videolistformod(session));
 		
-		return "m/mmain";  
+		return "manage/video_manage";  
 	}
 	
 	@RequestMapping(value="/videodel")
@@ -266,7 +266,7 @@ public class ManageController {
 		
 
  session.setAttribute("videolist", Util.videolistformod(session));
-		return "m/mmain";  
+ return "manage/video_manage";  
 	}
 	
 	@RequestMapping(value="/crtpasswd")
