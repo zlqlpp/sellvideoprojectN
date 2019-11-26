@@ -38,7 +38,7 @@
 
 				<ul class="nav nav-list">
 					<li class="">
-						<a href="#">
+						<a href="/m/video_down">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> 下载视频 </span>
 						</a>
