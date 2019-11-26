@@ -98,10 +98,8 @@ public class ManageController {
 		if("dwnvideo".equals(page)){
 			return "manage/video_down";
 		}else if("crtgg".equals(page)){
-			return "m/crtgg";
-		} else if("clsvideo".equals(page)){
-			return "m/clsvideo";
-		} 
+			return "manage/ad_manage";
+		}
 		
 		 return "manage/video_manage";  
 	}
