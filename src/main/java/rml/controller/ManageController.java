@@ -250,6 +250,8 @@ public class ManageController {
 		if(prop==null) {
 			prop = Util.getProp(session);
 		}
+		
+		Logger.getLogger(ManageController.class).info("视频路径："+prop.getProperty("videoPath")+vname);
 		File video = new File(prop.getProperty("videoPath")+vname);
 		
 		File[] files = video.listFiles();
