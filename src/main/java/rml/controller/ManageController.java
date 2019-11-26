@@ -96,7 +96,7 @@ public class ManageController {
 		String page = request.getParameter("page");
 		
 		if("dwnvideo".equals(page)){
-			return "manage/dwnvideo";
+			return "manage/video_down";
 		}else if("crtgg".equals(page)){
 			return "m/crtgg";
 		} else if("clsvideo".equals(page)){
