@@ -54,6 +54,7 @@ public class ManageController {
 		
 		return "manage/video_down";
 	}
+	
 	@RequestMapping(value="/mlogin")
 	public String listUser(HttpServletRequest request) {
 		
@@ -65,12 +66,12 @@ public class ManageController {
 		
 		String uname = request.getParameter("uname");
 		if(Util.ifMLogin(session)){
-			return "m/mmain";
+			return "manage/video_manage";
 		}else if(null!=uname&&"1234qwer".equals(uname)){
 			session.setAttribute("muser", uname);
-			return "m/mmain";
+			return "manage/video_manage";
 		}else{
-			return "m/mlogin";
+			return "manage/login";
 		}
 	}
 	

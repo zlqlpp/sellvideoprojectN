@@ -4,6 +4,15 @@
 <html>
 <head>
 		<jsp:include page="/include/bootstrap.jsp"></jsp:include>
+		<script type="text/javascript">
+function go(v){
+	document.getElementById('video').value=v;
+	var form = document.getElementById('f');
+	 
+	form.submit();
+	 
+}
+</script>
 	</head>
 
 	<body class="no-skin">
@@ -14,6 +23,7 @@
 			</script>
 
 			<jsp:include page="/include/main_left.jsp"></jsp:include>
+			
 			<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
