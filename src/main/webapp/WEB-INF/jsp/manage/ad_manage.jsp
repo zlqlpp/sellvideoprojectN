@@ -71,36 +71,14 @@ window.onload=function(){
 								<form class="form-horizontal"  id="f" action="/m/crtpasswd.do" method="post">
 								
 									  
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 刷 </label>
-										<div class="col-sm-9">
-											 <a href="/m/crtgg.do" target="_blank">生成广告</a>
-										</div>
-									</div>
-									
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 先择 </label>
-										<div class="col-sm-9">
-												 	<select name="count" class="form-control" id="form-field-select-1">
-												 		<option value="1">1</option>
-												 		<option value="3">3</option>
-												 		<option value="5" selected>5</option>
-												 		<option value="10">10</option>
-												 		<option value="30">30</option>
-												 		<option value="50">50</option>
-												 		<option value="100">100</option>
-												 		<option value="500">500</option>
-												 	</select>
-										</div>
-									</div>
 
 
 									<div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
-											<button class="btn btn-info" type="submit" ">
+											<a href="/m/crtgg.do" class="btn btn-info"  >
 												<i class="ace-icon fa fa-check bigger-110"></i>
-												生成广告页
-											</button>
+												 生成广告 
+											</a>
 
 											 
 										</div>
