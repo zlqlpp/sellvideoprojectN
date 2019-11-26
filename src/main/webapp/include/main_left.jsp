@@ -37,7 +37,7 @@
 				</div><!-- /.sidebar-shortcuts -->
 
 				<ul class="nav nav-list">
-					<li class="">
+					<li class="active open">
 						<a href="/m/mgotopage.do?page=dwnvideo">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> 下载视频 </span>
@@ -46,7 +46,7 @@
 						<b class="arrow"></b>
 					</li>
 
-					<li class="">
+					<li class="active open">
 						<a href="/m/regetvideolist.do" >
 							<i class="menu-icon fa fa-desktop"></i>
 							<span class="menu-text" >
@@ -72,7 +72,7 @@
 
 					</li>
 
-					<li class="">
+					<li class="active open">
 						<a href="/m/mgotopage.do?page=crtgg"  >
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> 广告管理 </span>
