@@ -103,7 +103,7 @@ function go(v){
 															</button>
 
 															<button class="btn btn-xs btn-danger">
-																<a class="ace-icon fa fa-trash-o bigger-120" href="/m/vidodel.do?vname=${v.vname }"></a>
+																<a class="ace-icon fa fa-trash-o bigger-120" href="/m/videodel.do?vname=${v.vname }"></a>
 															</button>
 
 														</div>

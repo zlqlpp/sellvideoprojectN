@@ -231,9 +231,9 @@ public class ManageController {
 	}
 	
 	@RequestMapping(value="/videodel")
-	public String clean(HttpServletRequest request,HttpSession session) {
+	public String videodel(HttpServletRequest request,HttpSession session) {
 		if(!Util.ifMLogin(session)){
-			return "m/mlogin";
+			return "manage/login";
 		}
 		
 		try {
