@@ -63,7 +63,7 @@ public class ManageController {
 	
 	@RequestMapping(value="/mmain")
 	public String videoManage(Model model,HttpServletRequest request,HttpSession session) {
-		
+		model.addAttribute("videolist", Util.videolistformod(session));
 		String uname = request.getParameter("uname");
 		if(Util.ifMLogin(session)){
 			return "manage/video_manage";
@@ -76,13 +76,13 @@ public class ManageController {
 	}
 	
 	@RequestMapping(value="/regetvideolist")
-	public String videolistfromod(HttpServletRequest request,HttpSession session) {
+	public String videolistfromod(Model model,HttpServletRequest request,HttpSession session) {
 		if(!Util.ifMLogin(session)){
 			return "manage/login";
 		}
 		
 		Logger.getLogger(ManageController.class).info("刷新视频列表");
-		session.setAttribute("videolist", Util.videolistformod(session));
+		model.addAttribute("videolist", Util.videolistformod(session));
 		
 		return "manage/video_manage";  
 	}
@@ -183,7 +183,7 @@ public class ManageController {
 		 
 		Logger.getLogger(ManageController.class).info("修改視頻");
 		
-		return "m/video_mod";  
+		return "manage/video_mod";  
 	}
 	
 	@RequestMapping(value="/vidomodupdata")
