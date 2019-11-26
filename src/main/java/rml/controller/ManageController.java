@@ -84,7 +84,7 @@ public class ManageController {
 		Logger.getLogger(ManageController.class).info("刷新视频列表");
 		session.setAttribute("videolist", Util.videolistformod(session));
 		
-		return "manage/video_main";  
+		return "manage/video_manage";  
 	}
 	
 	@RequestMapping(value="/mgotopage")
