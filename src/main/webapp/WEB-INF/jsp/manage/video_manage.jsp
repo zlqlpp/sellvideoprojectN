@@ -135,19 +135,12 @@ function go(v){
 										<table id="simple-table" class="table  table-bordered table-hover">
 											<thead>
 												<tr>
-													<th class="center">
-														<label class="pos-rel">
-															<input type="checkbox" class="ace" />
-															<span class="lbl"></span>
-														</label>
-													</th>
-													<th class="detail-col">Details</th>
-													<th>Domain</th>
-													<th>Price</th>
-													<th class="hidden-480">Clicks</th>
+													<th>T_ID</th>
+													<th>视频_ID</th>
+													<th class="hidden-480">视频标题+时长</th>
 
 		 
-													<th class="hidden-480">Status</th>
+													<th class="hidden-480">创建时间</th>
 
 													<th></th>
 												</tr>
@@ -156,41 +149,21 @@ function go(v){
 											<tbody>
 
 												<tr>
-													<td class="center">
-														<label class="pos-rel">
-															<input type="checkbox" class="ace" />
-															<span class="lbl"></span>
-														</label>
-													</td>
+													<td> ${v.id }</td>
+													<td>${v.vid }</td>
+													<td class="hidden-480">${v.vtitle }<c:if test="${! empty v.vlenght}">---(时长:${v.vlenght })</c:if></td>
 
-													<td class="center">
-														<div class="action-buttons">
-															<a href="#" class="green bigger-140 show-details-btn" title="Show Details">
-																<i class="ace-icon fa fa-angle-double-down"></i>
-																<span class="sr-only">Details</span>
-															</a>
-														</div>
-													</td>
-
-													<td>
-														<a href="#">pro.com</a>
-													</td>
-													<td>$55</td>
-													<td class="hidden-480">4,250</td>
-
-													<td class="hidden-480">
-														<span class="label label-sm label-success">Registered</span>
-													</td>
+													<td class="hidden-480">${v.crt_date } </td>
 
 													<td>
 														<div class="hidden-sm hidden-xs btn-group">
 
 															<button class="btn btn-xs btn-info">
-																<i class="ace-icon fa fa-pencil bigger-120"></i>
+																<a class="ace-icon fa fa-pencil bigger-120" href="/m/vidomod.do?id=${v.id }&vid=${v.vid }&vname=${v.vname }"></a>
 															</button>
 
 															<button class="btn btn-xs btn-danger">
-																<i class="ace-icon fa fa-trash-o bigger-120"></i>
+																<a class="ace-icon fa fa-trash-o bigger-120" href="/m/vidodel.do?vname=${v.vname }"></a>
 															</button>
 
 														</div>
@@ -203,14 +176,6 @@ function go(v){
 									</div><!-- /.span -->
 								</div><!-- /.row -->
 
-								<div class="hr hr-18 dotted hr-double"></div>
-
-								<h4 class="pink">
-									<i class="ace-icon fa fa-hand-o-right icon-animated-hand-pointer blue"></i>
-									<a href="#modal-table" role="button" class="green" data-toggle="modal"> Table Inside a Modal Box </a>
-								</h4>
-
-								<div class="hr hr-18 dotted hr-double"></div>
 
 
 								<!-- PAGE CONTENT ENDS -->
