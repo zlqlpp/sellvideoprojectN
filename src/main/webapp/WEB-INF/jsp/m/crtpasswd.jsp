@@ -1,73 +1,183 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<!-- 新 Bootstrap4 核心 CSS 文件 -->
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
-<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
-<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
-
-<script>
- var npd = "${newcode}";
-window.onload=function(){
- if(npd!=''){
-	 alert('新生成的观看码是:'+npd);
-	 document.getElementById("rush").click(); 
- }
-
-	   
+		<jsp:include page="/include/bootstrap.jsp"></jsp:include>
+ <script>
+ 
+function down(){
+	$.ajax({
+	    type : 'POST',
+	    url :'down.do',
+	    data :{"url":$('#url').val()},
+	    dataType : 'JSON',
+	    success : function(dto) {
+	    	alert('已加入下载任务列表，正在下载中');
+	    	document.getElementById("url").value="";;
+	    }});
 }
-
+ 
+ 
 </script>
-</head>
+	</head>
+
+	<body class="no-skin">
+	
+
+		<div class="main-container ace-save-state" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.loadState('main-container')}catch(e){}
+			</script>
+
+			<jsp:include page="/include/main_left.jsp"></jsp:include>
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="#">Home</a>
+							</li>
+
+							<li>
+								<a href="#">Forms</a>
+							</li>
+							<li class="active">Form Elements</li>
+						</ul>
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- /.nav-search -->
+					</div>
+
+					<div class="page-content">
+
+						<div class="page-header">
+							<h1>
+								Form Elements
+								<small>
+									<i class="ace-icon fa fa-angle-double-right"></i>
+									Common form elements and layouts
+								</small>
+							</h1>
+						</div><!-- /.page-header -->
+
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<form class="form-horizontal"  action="/m/vidomodupdata.do" method="post">
+								
+									  
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 视频url|视频地址 </label>
+										<div class="col-sm-9">
+											<input type="text" id="url"    class="form-control" />
+										</div>
+									</div>
 
 
-<body>
-<jsp:include page="/include/menu.jsp"></jsp:include>
-  	 
-<a id="rush" href="/m/lispasswd.do">刷新列表</a>   
-<hr>
-	 <span style="width:100px"></span>
-	 <form id="f" action="/m/crtpasswd.do" method="post">
-	 	<select name="count">
-	 		<option value="1">1</option>
-	 		<option value="3">3</option>
-	 		<option value="5" selected>5</option>
-	 		<option value="10">10</option>
-	 		<option value="30">30</option>
-	 		<option value="50">50</option>
-	 		<option value="100">100</option>
-	 		<option value="500">500</option>
-	 	</select>
-	 	<input type="submit" value="生成新的观看码"/>
-	 </form> 
-  	 <hr>
-  	 
-  	 	<table border="1" width="70%">
- 		<tr>
-   			<td height="40px" >观看码</td>
-   			<td>快速链接</td>
- 			<td  >剩余观看次数</td>
- 			<td  >创建时间</td>
-   		</tr>
-   		<c:forEach items="${passwdlist}" var="v">
-   		<tr>
-   			<td height="40px" >${v.code }</td>
-   			<td><a href="/c/listvideos.do?ucode=${v.code }" target="_blank">直达</a></td>
- 			<td  >${v.count }</td>
- 			<td  >${v.crtDate }</td>
-   		</tr>
-   		</c:forEach>
-   </table>
-   
-</body>
+									<div class="clearfix form-actions">
+										<div class="col-md-offset-3 col-md-9">
+											<button class="btn btn-info" type="button" onclick="down();">
+												<i class="ace-icon fa fa-check bigger-110"></i>
+												下载
+											</button>
+
+											 
+										</div>
+									</div>
+
+								</form>
+								
+								
+								<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="row">
+									<div class="col-xs-12">
+										<table id="simple-table" class="table  table-bordered table-hover">
+											<thead>
+												<tr>
+													<th>T_ID</th>
+													<th>视频_ID</th>
+													<th class="hidden-480">视频标题+时长</th>
+
+		 
+													<th class="hidden-480">创建时间</th>
+
+													<th></th>
+												</tr>
+											</thead>
+
+											<tbody>
+												<c:forEach items="${videolist}" var="v">
+												<tr>
+													<td> ${v.id }</td>
+													<td>${v.vid }</td>
+													<td class="hidden-480">${v.vtitle }<c:if test="${! empty v.vlenght}">---(时长:${v.vlenght })</c:if></td>
+
+													<td class="hidden-480">${v.crt_date } </td>
+
+													<td>
+														<div class="hidden-sm hidden-xs btn-group">
+
+															<button class="btn btn-xs btn-info">
+																<a class="ace-icon fa fa-pencil bigger-120" href="/m/vidomod.do?id=${v.id }&vid=${v.vid }&vname=${v.vname }"></a>
+															</button>
+
+															<button class="btn btn-xs btn-danger">
+																<a class="ace-icon fa fa-trash-o bigger-120" href="/m/vidodel.do?vname=${v.vname }"></a>
+															</button>
+
+														</div>
+
+													</td>
+												</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</div><!-- /.span -->
+								</div><!-- /.row -->
+
+
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					
+								
+								
+
+												</div>
+
+											</div>
+										</div>
+
+									</div>
+								
+
+
+							</div><!-- /.col -->
+		
+		
+		
+		</div><!-- /.row -->
+
+			<jsp:include page="/include/main_footer.jsp"></jsp:include>
+
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+			</a>
+
+
+
+
+	</body>
 </html>

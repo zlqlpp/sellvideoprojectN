@@ -78,7 +78,7 @@ function down(){
 									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 视频url|视频地址 </label>
 										<div class="col-sm-9">
-											<input type="text" id="rul"    class="form-control" />
+											<input type="text" id="url"    class="form-control" />
 										</div>
 									</div>
 

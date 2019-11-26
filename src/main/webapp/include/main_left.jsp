@@ -61,7 +61,7 @@
 					</li>
 
 					<li class="active open">
-						<a href="#"  >
+						<a href="/m/lispasswd.do"  >
 							<i class="menu-icon fa fa-list"></i>
 							<span class="menu-text"> 观看码管理 </span>
 
@@ -73,7 +73,7 @@
 					</li>
 
 					<li class="">
-						<a href="#"  >
+						<a href="/m/mgotopage.do?page=crtgg"  >
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> 广告管理 </span>
 

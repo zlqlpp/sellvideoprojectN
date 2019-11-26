@@ -32,7 +32,6 @@ function clean(){
 
 
 <body>
-<jsp:include page="/include/menu.jsp"></jsp:include>
  
     
 

@@ -30,7 +30,6 @@ window.onload=function(){
 
 
 <body>
-<jsp:include page="/include/menu.jsp"></jsp:include>
  
   	 <a href="/m/crtgg.do" target="_blank">生成广告</a>
   	 <hr>
