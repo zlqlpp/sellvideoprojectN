@@ -316,7 +316,7 @@ public class ManageController {
 		Collections.reverse(codelist);
 		model.addAttribute("passwdlist",codelist);
 		
-		return "m/crtpasswd";  
+		return "manage/viewcode_manage";  
 	}
 	
 	@RequestMapping(value="/initdb")

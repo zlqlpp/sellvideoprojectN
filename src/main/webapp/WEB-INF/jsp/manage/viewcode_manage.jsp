@@ -4,21 +4,17 @@
 <html>
 <head>
 		<jsp:include page="/include/bootstrap.jsp"></jsp:include>
- <script>
- 
-function down(){
-	$.ajax({
-	    type : 'POST',
-	    url :'down.do',
-	    data :{"url":$('#url').val()},
-	    dataType : 'JSON',
-	    success : function(dto) {
-	    	alert('已加入下载任务列表，正在下载中');
-	    	document.getElementById("url").value="";;
-	    }});
+<script>
+ var npd = "${newcode}";
+window.onload=function(){
+ if(npd!=''){
+	 alert('新生成的观看码是:'+npd);
+	 document.getElementById("rush").click(); 
+ }
+
+	   
 }
- 
- 
+
 </script>
 	</head>
 
@@ -30,7 +26,8 @@ function down(){
 				try{ace.settings.loadState('main-container')}catch(e){}
 			</script>
 
-<jsp:include page="/include/main_left.jsp"></jsp:include>
+			<jsp:include page="/include/main_left.jsp"></jsp:include>
+			
 			<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -71,14 +68,29 @@ function down(){
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-								<form class="form-horizontal"  action="/m/vidomodupdata.do" method="post">
+								<form class="form-horizontal"  id="f" action="/m/crtpasswd.do" method="post">
 								
 									  
-
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 视频url|视频地址 </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 刷 </label>
 										<div class="col-sm-9">
-											<input type="text" id="url"    class="form-control" />
+											 <a id="rush" href="/m/lispasswd.do">刷新列表</a>  
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 先择 </label>
+										<div class="col-sm-9">
+												 	<select name="count" class="form-control" id="form-field-select-1">
+	 		<option value="1">1</option>
+	 		<option value="3">3</option>
+	 		<option value="5" selected>5</option>
+	 		<option value="10">10</option>
+	 		<option value="30">30</option>
+	 		<option value="50">50</option>
+	 		<option value="100">100</option>
+	 		<option value="500">500</option>
+	 	</select>
 										</div>
 									</div>
 
@@ -95,6 +107,44 @@ function down(){
 									</div>
 
 								</form>
+								
+								
+								<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="row">
+									<div class="col-xs-12">
+										<table id="simple-table" class="table  table-bordered table-hover">
+											<thead>
+												<tr>
+													<th>观看码</th>
+													<th>快速链接</th>
+													<th class="hidden-480">剩余观看次数</th>
+													<th class="hidden-480">创建时间</th>
+												</tr>
+											</thead>
+											<tbody>
+												<c:forEach items="${passwdlist}" var="v">
+												<tr>
+													<td height="40px" >${v.code }</td>
+   													<td><a href="/c/listvideos.do?ucode=${v.code }" target="_blank">直达</a></td>
+ 													<td  >${v.count }</td>
+ 													<td  >${v.crtDate }</td>
+												</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</div><!-- /.span -->
+								</div><!-- /.row -->
+
+
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					
+								
+								
 
 												</div>
 
@@ -106,7 +156,10 @@ function down(){
 
 
 							</div><!-- /.col -->
-						</div><!-- /.row -->
+		
+		
+		
+		</div><!-- /.row -->
 
 			<jsp:include page="/include/main_footer.jsp"></jsp:include>
 
