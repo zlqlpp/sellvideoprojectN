@@ -242,7 +242,7 @@ public class ManageController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String vname = request.getParameter("vidodel"); 
+		String vname = request.getParameter("vname"); 
 		
 		Logger.getLogger(ManageController.class).info("清空视频列表");
 		
