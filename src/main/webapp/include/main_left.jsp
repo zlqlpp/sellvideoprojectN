@@ -38,7 +38,7 @@
 
 				<ul class="nav nav-list">
 					<li class="">
-						<a href="/m/video_down">
+						<a href="/m/mgotopage.do?page=dwnvideo">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> 下载视频 </span>
 						</a>
