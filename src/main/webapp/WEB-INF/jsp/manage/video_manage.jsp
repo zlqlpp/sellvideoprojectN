@@ -147,7 +147,7 @@ function go(v){
 											</thead>
 
 											<tbody>
-
+												<c:forEach items="${videolist}" var="v">
 												<tr>
 													<td> ${v.id }</td>
 													<td>${v.vid }</td>
@@ -170,7 +170,7 @@ function go(v){
 
 													</td>
 												</tr>
-
+												</c:forEach>
 											</tbody>
 										</table>
 									</div><!-- /.span -->
