@@ -100,7 +100,7 @@ public  class Util {
 	        		flag = true;
 	        		for(int j=0;j<tmpvlist.size();j++){
 	        			v = (Video) tmpvlist.get(j);
-	        			if(v.getVid().equals(fileNamesArray[i].getName())&&!fileNamesArray[i].getName().endsWith("part")){
+	        			if(v.getVid().equals(fileNamesArray[i].getName().split("\\.")[0])&&!fileNamesArray[i].getName().endsWith("part")){
 	        				vlist.add(v);
 	        				flag = false;
 	        				break;
