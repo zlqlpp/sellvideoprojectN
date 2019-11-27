@@ -88,14 +88,7 @@
 					<li class="">
 						<a href="#">
 							<i class="menu-icon fa fa-calendar"></i>
-
-							<span class="menu-text">
-								敬请期待
-
-								<span class="badge badge-transparent tooltip-error" title="2 Important Events">
-									<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
-								</span>
-							</span>
+							<span class="menu-text"> 敬请期待 </span>
 						</a>
 					</li>
 
@@ -116,12 +109,7 @@
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-file-o"></i>
-
-							<span class="menu-text">
-								敬请期待
-
-								<span class="badge badge-primary">5</span>
-							</span>
+							<span class="menu-text"> 敬请期待 </span>
 						</a>
 					</li>
 				</ul><!-- /.nav-list -->

@@ -85,7 +85,6 @@ public  class Util {
 				prop = getProp(session);
 			}
 			
-			List tmpvlist = null;    
 			List vlist = new ArrayList();
 			
 			File file = new File(prop.getProperty("videoPath"));
@@ -93,25 +92,29 @@ public  class Util {
  
 	        Video v = null;
 	        if(null != fileNamesArray){
-	        for (int i = fileNamesArray.length-1; i >=0 ; i--) {
-	        	 
-	        	tmpvlist = null;  
-	            if (fileNamesArray[i].isFile()) {
-	            	tmpvlist = Sqlite3Util.selectfromvide("'"+fileNamesArray[i].getName().split("\\.")[0]+"'");
-	            	if(null!=tmpvlist&&tmpvlist.size()>0) {
-	            		v = (Video) tmpvlist.get(0);
+	        	
+	        	List tmpvlist = new ArrayList(); 
+	        	tmpvlist = Sqlite3Util.selectfromvide("");
+	        	boolean flag = true;
+	        	for(int i=0;i<fileNamesArray.length;i++){
+	        		flag = true;
+	        		for(int j=0;j<tmpvlist.size();j++){
+	        			v = (Video) tmpvlist.get(j);
+	        			if(v.getVid().equals(fileNamesArray[i].getName())&&!fileNamesArray[i].getName().endsWith("part")){
+	        				vlist.add(v);
+	        				flag = false;
+	        				break;
+	        			}
+	        		}
+	        		if(flag&&!fileNamesArray[i].getName().endsWith("part")){
+	        			v = new Video();
+	            		v.setVid(fileNamesArray[i].getName().split("\\.")[0]);
+	            		v.setVname(fileNamesArray[i].getName());
 	            		vlist.add(v);
-	            	}else {
-	            		if(!fileNamesArray[i].getName().endsWith("part")) {
-	            			v = new Video();
-		            		v.setVid(fileNamesArray[i].getName().split("\\.")[0]);
-		            		v.setVname(fileNamesArray[i].getName());
-		            		vlist.add(v);
-	            		}
-	            		
-	            	}
-	            }
-	        }
+	        		}
+	        	}
+	        	
+ 
 	        }
 	        return  vlist;
 	        

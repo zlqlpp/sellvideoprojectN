@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
 import rml.bean.User;
@@ -96,6 +97,9 @@ public class Sqlite3Util {
 	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
 	      String sql = "select * from video where vid in ("+vids+") order by crt_date desc"; 
+	      if(StringUtils.isBlank(vids)){
+	    	  sql = "select * from video  order by crt_date desc"; 
+	      }
 	      Logger.getLogger(Sqlite3Util.class).info("sql："+ sql); 
 	       ResultSet rs = statement.executeQuery(sql);
 	       List vlist = new ArrayList();
