@@ -58,7 +58,7 @@ public class Sqlite3Util {
 	      
 	      //statement.executeUpdate("create table video (id integer, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date string,vkind integer)");
 	      int id = new Long(new Date().getTime()).intValue();
-	       StringBuffer sb = new StringBuffer("insert into video (vid ,vtitle ,vname ,vlenght ,vsize ,crt_date ,vkind ) values(, ");
+	       StringBuffer sb = new StringBuffer("insert into video (vid ,vtitle ,vname ,vlenght ,vsize ,crt_date ,vkind ) values( ");
 	       sb.append("'"+v.getVid()+"',");
 	       String title = null!=v.getVtitle()?v.getVtitle().trim():"";
 	       sb.append("'"+title+"',");
