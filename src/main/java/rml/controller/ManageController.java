@@ -90,7 +90,7 @@ public class ManageController {
 	@RequestMapping(value="/mgotopage")
 	public String mgotopage(Model model,HttpServletRequest request,HttpSession session) {
 		if(!Util.ifMLogin(session)){
-			return "m/mlogin";
+			return "manage/login";
 		}
 		
 		String page = request.getParameter("page");
@@ -115,7 +115,7 @@ public class ManageController {
 		 if(null!=reqeustT&&t-Long.parseLong(reqeustT)<300000){*/
 			 
 			 model.addAttribute("videolist",Util.getVideoListFromFileAndDB(session));
-			 return "m/crtggdetail";
+			 return "manage/ad_manage_detail";
 		/* }
 		 
 			if(!Util.ifMLogin(session)){
@@ -160,7 +160,7 @@ public class ManageController {
 	@RequestMapping(value="/vidomod")
 	public String vidomod(Model model,HttpServletRequest request,HttpSession session) {
 		if(!Util.ifMLogin(session)){
-			return "m/mlogin";
+			return "manage/login";
 		}
 		
 		String id = request.getParameter("id");
@@ -187,7 +187,7 @@ public class ManageController {
 	@RequestMapping(value="/vidomodupdata")
 	public String vidomodupdata(Model model,HttpServletRequest request,HttpSession session) {
 		if(!Util.ifMLogin(session)){
-			return "m/mlogin";
+			return "manage/login";
 		}
 		try {
 			request.setCharacterEncoding("UTF-8");
@@ -270,7 +270,7 @@ public class ManageController {
 	@RequestMapping(value="/crtpasswd")
 	public String crtpasswd(Model model,HttpServletRequest request,HttpSession session) {
 		if(!Util.ifMLogin(session)){
-			return "m/mlogin";
+			return "manage/login";
 		}
 		
 		Logger.getLogger(ManageController.class).info("创建观看码");
@@ -296,13 +296,13 @@ public class ManageController {
 		
 		model.addAttribute("newcode", user.getCode());
 		
-		return "m/crtpasswd";  
+		return "manage/viewcode_manage";  
 	}
 	
 	@RequestMapping(value="/lispasswd")
 	public String lispasswd(Model model,HttpServletRequest request,HttpSession session) {
 		if(!Util.ifMLogin(session)){
-			return "m/mlogin";
+			return "manage/login";
 		}
 		
 		Logger.getLogger(ManageController.class).info("列出所有观看码");
