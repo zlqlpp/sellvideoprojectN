@@ -152,11 +152,11 @@ body {background: #FFF; background-image:none; line-height: 130%; font-size: 10p
     	<div class="bm">
         	<div class="bm_h">天天看(客服vx:ttktiantiankan)  </div>
 			
-			<a href="/c/listvideos.do"><h3>返回列表</h3></a>
+			<a href="/c/listvideos.do?ucode=${user.code }"><h3>返回列表</h3></a>
         	<iframe src='/video/${vname }' frameborder='0' width='auto' height='auto' allowfullscreen='true'  ></iframe>
         	<br/>
         	<br/>
-        	<font size="4"><font color="#ff0000"><a href="/c/listvideos.do"><h3>返回列表</h3></a> </font></font> <br />
+        	<font size="4"><font color="#ff0000"><a href="/c/listvideos.do?ucode=${user.code }"><h3>返回列表</h3></a> </font></font> <br />
        </div>
   </div>
  
