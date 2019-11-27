@@ -52,8 +52,6 @@
 							<span class="menu-text" >
 								视频管理
 							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
 						<b class="arrow"></b>
@@ -64,8 +62,6 @@
 						<a href="/m/lispasswd.do"  >
 							<i class="menu-icon fa fa-list"></i>
 							<span class="menu-text"> 观看码管理 </span>
-
-							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
 						<b class="arrow"></b>
@@ -76,8 +72,6 @@
 						<a href="/m/mgotopage.do?page=crtgg"  >
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> 广告管理 </span>
-
-							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
 						<b class="arrow"></b>
@@ -89,8 +83,6 @@
 							<i class="menu-icon fa fa-list-alt"></i>
 							<span class="menu-text"> 敬请期待 </span>
 						</a>
-
-						<b class="arrow"></b>
 					</li>
 
 					<li class="">
@@ -105,8 +97,6 @@
 								</span>
 							</span>
 						</a>
-
-						<b class="arrow"></b>
 					</li>
 
 					<li class="">
@@ -114,20 +104,13 @@
 							<i class="menu-icon fa fa-picture-o"></i>
 							<span class="menu-text"> 敬请期待 </span>
 						</a>
-
-						<b class="arrow"></b>
 					</li>
 
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-tag"></i>
 							<span class="menu-text"> 敬请期待 </span>
-
-							<b class="arrow fa fa-angle-down"></b>
 						</a>
-
-						<b class="arrow"></b>
-
 					</li>
 
 					<li class="">
@@ -139,12 +122,7 @@
 
 								<span class="badge badge-primary">5</span>
 							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
 						</a>
-
-						<b class="arrow"></b>
-
 					</li>
 				</ul><!-- /.nav-list -->
 

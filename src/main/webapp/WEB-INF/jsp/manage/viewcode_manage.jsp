@@ -72,14 +72,14 @@ window.onload=function(){
 								
 									  
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 刷 </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">  </label>
 										<div class="col-sm-9">
 											 <a id="rush" href="/m/lispasswd.do">刷新列表</a>  
 										</div>
 									</div>
 									
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> 先择 </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">选择 </label>
 										<div class="col-sm-9">
 												 	<select name="count" class="form-control" id="form-field-select-1">
 												 		<option value="1">1</option>

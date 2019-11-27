@@ -75,7 +75,7 @@ window.onload=function(){
 
 									<div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
-											<a href="/m/crtgg.do" class="btn btn-info"  >
+											<a href="/m/crtgg.do" target="_blank" class="btn btn-info"  >
 												<i class="ace-icon fa fa-check bigger-110"></i>
 												 生成广告 
 											</a>

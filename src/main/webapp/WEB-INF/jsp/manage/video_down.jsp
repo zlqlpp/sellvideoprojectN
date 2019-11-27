@@ -72,7 +72,12 @@ function down(){
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 								<form class="form-horizontal"  action="/m/vidomodupdata.do" method="post">
-								
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" ><a href="www.pornhub.com" target="_blank">资源一</a> </label>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" ><a href="www.91porn.com" target="_blank">资源二</a> </label>
+									</div>
 									  
 
 									<div class="form-group">
