@@ -311,7 +311,6 @@ public class ManageController {
 		List codelist = new ArrayList();
 		codelist = Sqlite3Util.selectfromuser("");
 		 
-		Collections.reverse(codelist);
 		model.addAttribute("passwdlist",codelist);
 		
 		return "manage/viewcode_manage";  

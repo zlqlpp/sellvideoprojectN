@@ -96,7 +96,7 @@ public class Sqlite3Util {
 	      Statement statement = connection.createStatement();
 	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-	      String sql = "select * from video where vid in ("+vids+") order by crt_date desc"; 
+	      String sql = "select * from video where vid in ("+vids+") order by id desc"; 
 	      if(StringUtils.isBlank(vids)){
 	    	  sql = "select * from video  order by crt_date desc"; 
 	      }
@@ -181,6 +181,7 @@ public class Sqlite3Util {
 	      if(null!=seecode&&!"".equals(seecode)) {
 	    	  sql+=" where seecode='"+seecode+"'";
 	      }
+	      sql+=" order by id desc ";
 	      Logger.getLogger(Sqlite3Util.class).info("sql："+ sql); 
 	       ResultSet rs = statement.executeQuery(sql);
 	       List ulist = new ArrayList();
@@ -190,7 +191,7 @@ public class Sqlite3Util {
 	    	  u.setId(rs.getInt("id")+"");
 	    	  u.setCode(rs.getString("seecode"));
 	    	  u.setCount(rs.getDouble("count"));
-	    	  u.setCrtDate(rs.getLong("crt_date")+"");
+	    	  u.setCrtDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(rs.getLong("crt_date"))));
 	    	   
 	         ulist.add(u);
 	      } 
