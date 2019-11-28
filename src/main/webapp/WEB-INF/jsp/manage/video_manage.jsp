@@ -78,8 +78,7 @@ function go(v){
 													<th>T_ID</th>
 													<th>视频_ID</th>
 													<th class="hidden-480">视频标题+时长</th>
-
-		 
+													<th>观看次数</th>
 													<th class="hidden-480">创建时间</th>
 
 													<th></th>
@@ -92,7 +91,7 @@ function go(v){
 													<td> ${v.id }</td>
 													<td>${v.vid }</td>
 													<td class="hidden-480">${v.vtitle }<c:if test="${! empty v.vlenght}">---(时长:${v.vlenght })</c:if></td>
-
+													<td>${v.count }</td>
 													<td class="hidden-480">${v.crt_date } </td>
 
 													<td>

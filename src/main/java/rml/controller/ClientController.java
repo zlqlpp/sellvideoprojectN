@@ -95,6 +95,11 @@ public class ClientController {
 		List vlist = Sqlite3Util.selectfromvide("'"+vid+"'"); //---------------------找到视频
 		Video v = (Video) vlist.get(0);
 		
+		int ret = Sqlite3Util.updatevideoviewcount(v);
+		if(ret==0){
+			Logger.getLogger(ClientController.class).info("观看视频时，更新视频的观看次数时失败！" );
+		}
+		
 		session.setAttribute("user", u); //--------------------- 返回前台
 		 model.addAttribute("vname", v.getVname());
  

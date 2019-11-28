@@ -11,6 +11,7 @@ public class Video {
 	private String vsize;
 	private String crt_date;
 	private String vkind;
+	private String count;
 	
 	 
 		public Video() {
@@ -23,6 +24,7 @@ public class Video {
 		this.vsize = "0";
 		this.crt_date = "";
 		this.vkind = "0";
+		this.count="0";
 	}
 		public String getId() {
 			return id;
@@ -72,4 +74,10 @@ public class Video {
 	public void setVsize(String vsize) {
 		this.vsize = vsize;
 	}
+	public String getCount() {
+	return count;
+}
+public void setCount(String count) {
+	this.count = count;
+}
 }

@@ -30,7 +30,7 @@ public class Sqlite3Util {
       statement.executeUpdate("create table user (id integer PRIMARY KEY, seecode string,count double,crt_date long)");
 
       statement.executeUpdate("drop table if exists video");
-      statement.executeUpdate("create table video (id integer PRIMARY KEY, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date long,vkind integer)");
+      statement.executeUpdate("create table video (id integer PRIMARY KEY, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date long,vkind integer,count double)");
 
     }
     catch(Exception e) {
@@ -58,7 +58,7 @@ public class Sqlite3Util {
 	      
 	      //statement.executeUpdate("create table video (id integer, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date string,vkind integer)");
 	      int id = new Long(new Date().getTime()).intValue();
-	       StringBuffer sb = new StringBuffer("insert into video (vid ,vtitle ,vname ,vlenght ,vsize ,crt_date ,vkind ) values( ");
+	       StringBuffer sb = new StringBuffer("insert into video (vid ,vtitle ,vname ,vlenght ,vsize ,crt_date ,vkind,count ) values( ");
 	       sb.append("'"+v.getVid()+"',");
 	       String title = null!=v.getVtitle()?v.getVtitle().trim():"";
 	       sb.append("'"+title+"',");
@@ -66,7 +66,7 @@ public class Sqlite3Util {
 	       sb.append("'"+v.getVlenght()+"',");
 	       sb.append(""+v.getVsize()+",");
 	       sb.append(""+new Date().getTime()+",");
-	       sb.append( v.getVkind()+")" );
+	       sb.append( v.getVkind()+","+v.getCount()+")" );
 	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
 	      int ret = statement.executeUpdate(sb.toString());
 	      
@@ -114,6 +114,7 @@ public class Sqlite3Util {
 	    	  v.setVsize(rs.getInt("vsize")+"");
 	    	  v.setCrt_date(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(rs.getLong("crt_date"))));
 	    	  v.setVkind(rs.getString("vkind"));
+	    	  v.setCount(rs.getDouble("count")+"");
 	         vlist.add(v);
 	      } 
 	      Logger.getLogger(Sqlite3Util.class).info("sql--select ret count："+ vlist.size()); 
@@ -247,6 +248,33 @@ public class Sqlite3Util {
 	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
 	      
 	       StringBuffer sb = new StringBuffer("update video set vtitle='"+v.getVtitle()+"' where id="+v.getId()+""); 
+
+	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
+	      int ret = statement.executeUpdate(sb.toString());
+	      
+	      Logger.getLogger(Sqlite3Util.class).info("sql-ret："+ ret); 
+	      return ret;
+	    } catch(Exception e) {
+	    	 e.printStackTrace();
+	    } finally {
+	      try {
+	        if(connection != null)
+	          connection.close();
+	      } catch(SQLException e) {
+	    	  e.printStackTrace();
+	      }
+	    }
+	    return 0;
+	  }
+  public static int updatevideoviewcount(Video v) {   //----------------------创建观看码实体
+	    Connection connection = null;
+	    try {
+	    	 Class.forName("org.sqlite.JDBC");
+	      connection = DriverManager.getConnection("jdbc:sqlite:/root/youtubedl/video.db");
+	      Statement statement = connection.createStatement();
+	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
+	      
+	       StringBuffer sb = new StringBuffer("update video set count=count+1 where vid="+v.getVid()+""); 
 
 	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
 	      int ret = statement.executeUpdate(sb.toString());
