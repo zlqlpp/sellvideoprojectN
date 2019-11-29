@@ -119,8 +119,10 @@ window.onload=function(){
 												<tr>
 													<th>观看码</th>
 													<th>快速链接</th>
-													<th class="hidden-480">剩余观看次数</th>
+													<th class="hidden-480">观看次数</th>
 													<th class="hidden-480">创建时间</th>
+													<th class="hidden-480">状态(0失效1有效)</th>
+													<th></th>
 												</tr>
 											</thead>
 											<tbody>
@@ -128,8 +130,17 @@ window.onload=function(){
 												<tr>
 													<td height="40px" >${v.code }</td>
    													<td><a href="/c/listvideos.do?ucode=${v.code }" target="_blank">直达</a></td>
- 													<td  >${v.count }</td>
+ 													<td  >共:${v.count_static }次|剩余:${v.count }次</td>
  													<td  >${v.crtDate }</td>
+ 													<td  >${v.isdeleted }</td>
+ 													<td>
+														<div class="hidden-sm hidden-xs btn-group">
+																<a class="ace-icon fa  bigger-120" href="/m/passwdmod.do?id=${v.id }&vid=${v.vid }&isdeleted=0">生效</a>
+															 &nbsp;&nbsp;&nbsp;&nbsp;
+																<a class="ace-icon fa  bigger-120" href="/m/passwdmod.do?id=${v.id }&vid=${v.vid }&isdeleted=1">失效</a>
+														</div>
+
+													</td>
 												</tr>
 												</c:forEach>
 											</tbody>

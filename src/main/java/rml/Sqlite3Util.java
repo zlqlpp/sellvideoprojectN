@@ -27,7 +27,7 @@ public class Sqlite3Util {
       statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
       statement.executeUpdate("drop table if exists user");
-      statement.executeUpdate("create table user (id integer PRIMARY KEY, seecode string,count double,crt_date long)");
+      statement.executeUpdate("create table user (id integer PRIMARY KEY, seecode string,count double,crt_date long,count_static double,isdeleted integer)");
 
       statement.executeUpdate("drop table if exists video");
       statement.executeUpdate("create table video (id integer PRIMARY KEY, vid string,vtitle string,vname string,vlenght string,vsize integer,crt_date long,vkind integer,count double)");
@@ -144,10 +144,10 @@ public class Sqlite3Util {
 	      //statement.executeUpdate("create table user (id integer, seecode string,count integer,crt_date string)");
 	      
 	      //int id = new Long(new Date().getTime()).intValue();
-	       StringBuffer sb = new StringBuffer("insert into user (seecode ,count ,crt_date ) values(");
+	       StringBuffer sb = new StringBuffer("insert into user (seecode ,count ,crt_date,count_static,isdeleted ) values("); 
 	       sb.append("'"+u.getCode()+"',");
-	       sb.append(u.getCount()+",");
-	       sb.append(""+u.getCrtDate()+")");
+	       sb.append(u.getCount()+","+u.getCrtDate()+","+u.getCount()+","+0);
+	       sb.append(")");
 	       
 	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
 	      int ret = statement.executeUpdate(sb.toString());
@@ -193,6 +193,8 @@ public class Sqlite3Util {
 	    	  u.setCode(rs.getString("seecode"));
 	    	  u.setCount(rs.getDouble("count"));
 	    	  u.setCrtDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(rs.getLong("crt_date"))));
+	    	  u.setCount_static(rs.getDouble("count_static"));
+	    	  u.setIsdeleted(rs.getInt("isdeleted"));
 	    	   
 	         ulist.add(u);
 	      } 
@@ -238,7 +240,33 @@ public class Sqlite3Util {
 	    }
 	    return 0;
 	  }
-  
+  public static int updateuserstat(User u) {   //----------------------创建观看码实体
+	    Connection connection = null;
+	    try {
+	    	 Class.forName("org.sqlite.JDBC");
+	      connection = DriverManager.getConnection("jdbc:sqlite:/root/youtubedl/video.db");
+	      Statement statement = connection.createStatement();
+	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
+	      
+	       StringBuffer sb = new StringBuffer("update user set isdeleted="+u.getIsdeleted()+" where id="+u.getId()+""); 
+
+	       Logger.getLogger(Sqlite3Util.class).info("sql："+ sb.toString()); 
+	      int ret = statement.executeUpdate(sb.toString());
+	      
+	      Logger.getLogger(Sqlite3Util.class).info("sql-ret："+ ret); 
+	      return ret;
+	    } catch(Exception e) {
+	    	 e.printStackTrace();
+	    } finally {
+	      try {
+	        if(connection != null)
+	          connection.close();
+	      } catch(SQLException e) {
+	    	  e.printStackTrace();
+	      }
+	    }
+	    return 0;
+	  }
   public static int updatevideo(Video v) {   //----------------------创建观看码实体
 	    Connection connection = null;
 	    try {

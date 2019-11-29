@@ -112,19 +112,19 @@ function go(v){
 												</c:forEach>
 											</tbody>
 										</table>
-									</div><!-- /.span -->
-								</div><!-- /.row -->
+									</div> 
+								</div> 
 
 
 
-								<!-- PAGE CONTENT ENDS -->
-							</div><!-- /.col -->
-						</div><!-- /.row -->
+								 
+							</div> 
+						</div> 
 					
 					
-					</div><!-- /.page-content -->
+					</div> 
 				</div>
-			</div><!-- /.main-content -->
+			</div> 
 
 			<jsp:include page="/include/main_footer.jsp"></jsp:include>
 

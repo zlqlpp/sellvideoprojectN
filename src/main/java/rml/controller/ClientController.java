@@ -75,7 +75,7 @@ public class ClientController {
 			Logger.getLogger(ClientController.class).info("登录--查库有两个用户， 或没查到用户" );
 		}
 		u = (User) ulist.get(0);
-		if(u.getCount()<=0){
+		if(u.getCount()<=0||u.getIsdeleted()==1){
 			return "index";
 		}
 		

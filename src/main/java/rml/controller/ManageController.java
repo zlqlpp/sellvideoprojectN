@@ -292,8 +292,6 @@ public class ManageController {
 			Logger.getLogger(ManageController.class).info("创建观看码,code:"+user.getCode()+",观看次数，count:"+user.getCount()+",已入库");
 		}
 		
-
-		
 		model.addAttribute("newcode", user.getCode());
 		
 		return "manage/viewcode_manage";  
@@ -307,7 +305,33 @@ public class ManageController {
 		
 		Logger.getLogger(ManageController.class).info("列出所有观看码");
 		
+		List codelist = new ArrayList();
+		codelist = Sqlite3Util.selectfromuser("");
+		 
+		model.addAttribute("passwdlist",codelist);
 		
+		return "manage/viewcode_manage";  
+	}
+	
+	@RequestMapping(value="/passwdmod") //生效失效设置
+	public String passwdmod(Model model,HttpServletRequest request,HttpSession session) {
+		if(!Util.ifMLogin(session)){
+			return "manage/login";
+		}
+		
+		Logger.getLogger(ManageController.class).info("设置观看码有效失效状态");
+		
+		String isdeleted = request.getParameter("isdeleted");
+		String id = request.getParameter("id");
+		User u = new User();
+		u.setIsdeleted(new Integer(isdeleted));
+		u.setCode(id);
+		
+		int ret = Sqlite3Util.updateuserstat(u);
+		if(ret!=1) {
+			Logger.getLogger(ManageController.class).info("设置观看码有效失效状态=--失败");
+		}
+		 
 		List codelist = new ArrayList();
 		codelist = Sqlite3Util.selectfromuser("");
 		 
