@@ -126,18 +126,18 @@ window.onload=function(){
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach items="${passwdlist}" var="v">
+												<c:forEach items="${passwdlist}" var="u">
 												<tr>
-													<td height="40px" >${v.code }</td>
-   													<td><a href="/c/listvideos.do?ucode=${v.code }" target="_blank">直达</a></td>
- 													<td  >共:${v.count_static }次|剩余:${v.count }次</td>
- 													<td  >${v.crtDate }</td>
- 													<td  >${v.isdeleted }</td>
+													<td height="40px" >${u.code }</td>
+   													<td><a href="/c/listvideos.do?ucode=${u.code }" target="_blank">直达</a></td>
+ 													<td  >共:${u.count_static }次|剩余:${u.count }次</td>
+ 													<td  >${u.crtDate }</td>
+ 													<td  >${u.isdeleted }</td>
  													<td>
 														<div class="hidden-sm hidden-xs btn-group">
-																<a class="ace-icon fa  bigger-120" href="/m/passwdmod.do?id=${v.id }&vid=${v.vid }&isdeleted=0">生效</a>
+																<a class="ace-icon fa  bigger-120" href="/m/passwdmod.do?id=${u.id }&isdeleted=0">生效</a>
 															 &nbsp;&nbsp;&nbsp;&nbsp;
-																<a class="ace-icon fa  bigger-120" href="/m/passwdmod.do?id=${v.id }&vid=${v.vid }&isdeleted=1">失效</a>
+																<a class="ace-icon fa  bigger-120" href="/m/passwdmod.do?id=${u.id }&isdeleted=1">失效</a>
 														</div>
 
 													</td>

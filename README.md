@@ -15,6 +15,10 @@
 	yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm;
 	yum --enablerepo=remi install redis -y;
 	service redis start;
+4---youtudl下载
+sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl;
+sudo chmod a+rx /usr/local/bin/youtube-dl;
+
 
 mkdir /root/git_zlq/;
 cd /root/git_zlq/;
