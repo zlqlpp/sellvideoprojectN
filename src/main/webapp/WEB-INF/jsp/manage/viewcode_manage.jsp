@@ -121,7 +121,7 @@ window.onload=function(){
 													<th>快速链接</th>
 													<th class="hidden-480">观看次数</th>
 													<th class="hidden-480">创建时间</th>
-													<th class="hidden-480">状态(0没失效1失效)</th>
+													<th class="hidden-480">状态(0让看1不让看)</th>
 													<th></th>
 												</tr>
 											</thead>
