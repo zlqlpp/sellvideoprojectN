@@ -325,7 +325,7 @@ public class ManageController {
 		String id = request.getParameter("id");
 		User u = new User();
 		u.setIsdeleted(new Integer(isdeleted));
-		u.setCode(id);
+		u.setId(id);
 		
 		int ret = Sqlite3Util.updateuserstat(u);
 		if(ret!=1) {

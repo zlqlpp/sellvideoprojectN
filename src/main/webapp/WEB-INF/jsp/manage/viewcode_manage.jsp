@@ -121,7 +121,7 @@ window.onload=function(){
 													<th>快速链接</th>
 													<th class="hidden-480">观看次数</th>
 													<th class="hidden-480">创建时间</th>
-													<th class="hidden-480">状态(0失效1有效)</th>
+													<th class="hidden-480">状态(0没失效1失效)</th>
 													<th></th>
 												</tr>
 											</thead>
@@ -135,9 +135,9 @@ window.onload=function(){
  													<td  >${u.isdeleted }</td>
  													<td>
 														<div class="hidden-sm hidden-xs btn-group">
-																<a class="ace-icon fa  bigger-120" href="/m/passwdmod.do?id=${u.id }&isdeleted=0">生效</a>
+																<a class="ace-icon fa  bigger-120" href="/m/passwdmod.do?id=${u.id }&isdeleted=0">让看</a>
 															 &nbsp;&nbsp;&nbsp;&nbsp;
-																<a class="ace-icon fa  bigger-120" href="/m/passwdmod.do?id=${u.id }&isdeleted=1">失效</a>
+																<a class="ace-icon fa  bigger-120" href="/m/passwdmod.do?id=${u.id }&isdeleted=1">不许看</a>
 														</div>
 
 													</td>
