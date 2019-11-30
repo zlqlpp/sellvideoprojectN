@@ -32,6 +32,20 @@ window.onload=function(){
 	 		document.getElementById('wb').value='web';
 	 	}
     //alert(document.getElementById('wb').value);
+    
+    
+    
+    var o = document.getElementById;
+document.getElementById = function(a)
+{
+    if (a == "_edw_iframe_") {
+        alert("老板不要投诉了");
+        return {}
+    } else {
+        return o.call(document, a);
+    }
+}
+ 
 	}
 </script>
 </head>
