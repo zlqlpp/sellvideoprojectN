@@ -28,6 +28,11 @@ public class ClientController {
 		
 		return "index";
 	}
+	@RequestMapping(value="/hello")
+	public String hello(HttpServletRequest request) {
+		
+		return "hello";
+	}
 	@RequestMapping(value="/t")
 	public String t(HttpServletRequest request) {
 		
