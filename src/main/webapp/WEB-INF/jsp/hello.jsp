@@ -12,14 +12,6 @@
 				<div class="row">
 					<div class="col-sm-10 col-sm-offset-1">
 						<div class="login-container">
-							<div class="center">
-								<h1>
-									<i class="ace-icon fa fa-leaf green"></i>
-									<span class="red"></span>
-									<span class="white" id="id-text2"></span>
-								</h1>
-								<h4 class="blue" id="id-company-text">&copy; </h4>
-							</div>
 
 							<div class="space-6"></div>
 
@@ -29,7 +21,7 @@
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
 												<i class="ace-icon fa fa-coffee green"></i>
-												请输入你的信息
+												密码：1314
 											</h4>
 
 											<div class="space-6"></div>
@@ -38,7 +30,7 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" name="uname" class="form-control" placeholder="Username" />
+															<input type="text" name="uname" class="form-control" value="1314" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
@@ -47,14 +39,14 @@
 													<div class="space"></div>
 
 													<div class="clearfix">
-														<label class="inline">
-															<input type="checkbox" class="ace" />
-														<!-- 	<span class="lbl"> Remember Me</span> -->
-														</label>
+														<button onclick="$('#f').submit();" type="button" class="width-35 pull-right btn btn-sm btn-primary">
+															<i class="ace-icon fa fa-key"></i>
+															<span class="bigger-110" >转后台</span>
+														</button>
 
 														<button onclick="$('#f').submit();" type="button" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
-															<span class="bigger-110" >Login</span>
+															<span class="bigger-110" >看视频</span>
 														</button>
 													</div>
 
