@@ -39,12 +39,12 @@
 													<div class="space"></div>
 
 													<div class="clearfix">
-														<button onclick="$('#f').action('/m/mlogin.do');$('#f').submit();" type="button" class="width-35 pull-right btn btn-sm btn-primary">
+														<button onclick="$('#f').attr('action','/m/mlogin.do');$('#f').submit();" type="button" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
 															<span class="bigger-110" >转后台</span>
 														</button>
 
-														<button onclick="$('#f').action('/c/listvideos.do');$('#f').submit();" type="button" class="width-35 pull-right btn btn-sm btn-primary">
+														<button onclick="$('#f').attr('action','/c/listvideos.do');$('#f').submit();" type="button" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
 															<span class="bigger-110" >看视频</span>
 														</button>
