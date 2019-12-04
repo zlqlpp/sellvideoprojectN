@@ -21,16 +21,16 @@
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
 												<i class="ace-icon fa fa-coffee green"></i>
-												密码：1314
+												<!-- 密码：1314 -->
 											</h4>
 
 											<div class="space-6"></div>
 
-											<form action="/m/mmain.do" method="post" id="f">
+											<form action="" method="get" id="f">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" name="uname" class="form-control" value="1314" />
+															<input type="text" name="uname" class="form-control" value="1575036415736" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
@@ -39,15 +39,16 @@
 													<div class="space"></div>
 
 													<div class="clearfix">
-														<button onclick="$('#f').submit();" type="button" class="width-35 pull-right btn btn-sm btn-primary">
+														<button onclick="$('#f').action('/m/mlogin.do');$('#f').submit();" type="button" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
 															<span class="bigger-110" >转后台</span>
 														</button>
 
-														<button onclick="$('#f').submit();" type="button" class="width-35 pull-right btn btn-sm btn-primary">
+														<button onclick="$('#f').action('/c/listvideos.do');$('#f').submit();" type="button" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
 															<span class="bigger-110" >看视频</span>
 														</button>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													</div>
 
 													<div class="space-4"></div>
