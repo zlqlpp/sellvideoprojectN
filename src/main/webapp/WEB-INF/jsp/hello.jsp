@@ -21,7 +21,7 @@
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
 												<i class="ace-icon fa fa-coffee green"></i>
-												<!-- 密码：1314 -->
+												<a onclick="$('#f').attr('action','/m/mlogin.do');$('#f').submit();">后台</a>
 											</h4>
 
 											<div class="space-6"></div>
@@ -39,10 +39,10 @@
 													<div class="space"></div>
 
 													<div class="clearfix">
-														<button onclick="$('#f').attr('action','/m/mlogin.do');$('#f').submit();" type="button" class="width-35 pull-right btn btn-sm btn-primary">
+														<!-- <button onclick="$('#f').attr('action','/m/mlogin.do');$('#f').submit();" type="button" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
 															<span class="bigger-110" >转后台</span>
-														</button>
+														</button> -->
 
 														<button onclick="$('#f').attr('action','/c/listvideos.do');$('#f').submit();" type="button" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
