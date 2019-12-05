@@ -276,11 +276,15 @@ public class ManageController {
 		Logger.getLogger(ManageController.class).info("创建观看码");
 		
 		String count = request.getParameter("count");
+		String ucode = request.getParameter("ucode");
 		Date date = new Date();
 		Long code = date.getTime();
 		
 		User user = new User();
 		user.setCode(code.toString());
+		if(StringUtils.isNotBlank(ucode)){
+			user.setCode(ucode);
+		}
 		user.setCount(Double.parseDouble(count));
 		user.setCrtDate(code.toString());
 		

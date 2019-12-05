@@ -93,7 +93,12 @@ window.onload=function(){
 												 	</select>
 										</div>
 									</div>
-
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">选择 </label>
+										<div class="col-sm-9">
+												 	<input type="text" class="form-control" name="ucode" />
+										</div>
+									</div>
 
 									<div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
