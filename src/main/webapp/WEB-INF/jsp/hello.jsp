@@ -30,7 +30,7 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" name="uname" class="form-control" value="1575465834535" />
+															<input type="text" name="ucode" class="form-control" value="1575465834535" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>

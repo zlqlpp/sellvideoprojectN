@@ -45,18 +45,16 @@ public class ClientController {
 		String seecode = request.getParameter("ucode");
 		Logger.getLogger(ClientController.class).info("登录-- 前台传入的观看码为："+seecode);
 		
-		
-
-		List videolist = Util.getVideoListFromFileAndDB(session);
-		//Collections.reverse(videolist);
-		Logger.getLogger(ClientController.class).info("登录--读视频列表， 从文件读,然后找库，完成：" );
-		
 		List ulist = Sqlite3Util.selectfromuser(seecode);
 		if(null==ulist||ulist.size()!=1) {
 			Logger.getLogger(ClientController.class).info("登录--查库有两个用户， 或没查到用户" );
+			return "hello";
 		}
 		session.setAttribute("user", ulist.get(0));
 		
+		
+		List videolist = Util.getVideoListFromFileAndDB(session);
+		Logger.getLogger(ClientController.class).info("登录--读视频列表， 从文件读,然后找库，完成：" );
 		model.addAttribute("videolist",videolist);
 		return "listvideosN";
 	}
