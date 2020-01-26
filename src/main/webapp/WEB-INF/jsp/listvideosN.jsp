@@ -76,7 +76,7 @@ document.getElementById = function(a)
 										</div>
 										<div class="list_info">
 											<div >
-												<font color="Red"><p style="font-size: 11px;"> 已有2053人付款<b>5</b>元观看 </p></font>
+												<font color="Red"><p style="font-size: 11px;"> 欢迎<b></b>观看 </p></font>
 												<div >${v.vtitle }<c:if test="${! empty v.vlenght}">---(时长:${v.vlenght })</c:if></div>
 											</div>
 										</div>
